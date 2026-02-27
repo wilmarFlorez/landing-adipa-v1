@@ -1,4 +1,6 @@
-import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import { SiInstagram, SiFacebook, SiLinkedin, SiYoutube } from "react-icons/si";
+import type { IconType } from "react-icons";
 import Container from "@/components/ui/Container";
 
 const NAV_LINKS = [
@@ -9,11 +11,11 @@ const NAV_LINKS = [
   { label: "Sobre Nosotros", href: "#" },
 ];
 
-const SOCIAL_LINKS = [
-  { label: "Instagram", href: "#", Icon: Instagram },
-  { label: "Facebook", href: "#", Icon: Facebook },
-  { label: "LinkedIn", href: "#", Icon: Linkedin },
-  { label: "YouTube", href: "#", Icon: Youtube },
+const SOCIAL_LINKS: { label: string; href: string; Icon: IconType }[] = [
+  { label: "Instagram", href: "#", Icon: SiInstagram },
+  { label: "Facebook", href: "#", Icon: SiFacebook },
+  { label: "LinkedIn", href: "#", Icon: SiLinkedin },
+  { label: "YouTube", href: "#", Icon: SiYoutube },
 ];
 
 const CONTACT_INFO = [
