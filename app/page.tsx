@@ -7,11 +7,21 @@ import CoursesSection from "@/components/sections/CoursesSection";
 import ContactForm from "@/components/sections/ContactForm";
 
 export const metadata: Metadata = {
-  title: "ADIPA | Cursos de Psicología y Salud Mental",
+  // Renders as "Cursos de Psicología y Salud Mental | ADIPA" via layout template
+  title: "Cursos de Psicología y Salud Mental",
   description:
     "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
+  alternates: {
+    canonical: "https://adipa.cl/cursos",
+  },
   openGraph: {
-    title: "ADIPA | Cursos de Psicología y Salud Mental",
+    title: "Cursos de Psicología y Salud Mental | ADIPA",
+    description:
+      "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
+    url: "https://adipa.cl/cursos",
+  },
+  twitter: {
+    title: "Cursos de Psicología y Salud Mental | ADIPA",
     description:
       "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
   },
