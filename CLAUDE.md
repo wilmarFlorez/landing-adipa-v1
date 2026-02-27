@@ -74,6 +74,10 @@ Card shadow: `0 2px 4px rgba(3,27,78,0.06)` → hover: `0 10px 20px rgba(3,27,78
 5. **Contact Form** — name (min 2 chars), email (valid format), message (min 10 chars); client-side validation + visual success state
 6. **Footer** — logo, nav links, social icons, copyright
 
+## Code Style
+
+All comments and JSDoc must be written in **English**.
+
 ## Bonus Features (optional, evaluated)
 
 Deploy on Vercel · hover animations & filter transitions · semantic HTML + ARIA · meta tags + Open Graph · dark mode with `localStorage` · unit/integration tests · Lighthouse score > 90
