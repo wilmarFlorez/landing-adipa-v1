@@ -49,7 +49,7 @@ landing-adipa-v1/
 │   ├── layout.tsx          # Root layout: fonts, global metadata, dark mode anti-flash script
 │   ├── page.tsx            # Section composition and skip navigation
 │   ├── globals.css         # Tailwind directives only, no custom CSS
-│   └── sitemap.ts / robots.ts / favicon.ico
+│   └── favicon.ico
 ├── components/
 │   ├── layout/             # Header (sticky, mobile menu) and Footer
 │   ├── sections/           # Hero, CoursesSection, ContactForm
@@ -94,22 +94,8 @@ The active theme is persisted in `localStorage` under the key `adipa-theme`. To 
 
 The project is deployed on Vercel:
 
-**[https://adipa-cursos.vercel.app](https://adipa-cursos.vercel.app)**
+**[https://landing-adipa-v1.vercel.app/](https://landing-adipa-v1.vercel.app/)**
 
-### Deploy your own instance on Vercel
-
-```bash
-# 1. Install the Vercel CLI
-pnpm add -g vercel
-
-# 2. Authenticate and link the project
-vercel login
-
-# 3. Deploy to production
-vercel --prod
-```
-
-Vercel automatically detects Next.js and configures the build with no additional setup required.
 
 ## Author
 
