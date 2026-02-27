@@ -11,14 +11,12 @@ Stack: **Next.js 14+ (App Router) · Tailwind CSS · TypeScript (strict)**
 ## Commands
 
 ```bash
-npm install
-npm run dev        # development server
-npm run build      # production build
-npm run lint       # ESLint
-npx tsc --noEmit   # type check
+pnpm install
+pnpm dev                 # development server
+pnpm build               # production build
+pnpm lint                # ESLint
+pnpm exec tsc --noEmit   # type check
 ```
-
-> Once initialized, update this section with the actual Node version and any additional scripts.
 
 ## Architecture
 
