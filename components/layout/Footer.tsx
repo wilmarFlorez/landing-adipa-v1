@@ -19,8 +19,8 @@ const SOCIAL_LINKS: { label: string; href: string; Icon: IconType }[] = [
 ];
 
 const CONTACT_INFO = [
-  { Icon: Mail, text: "contacto@adipa.cl" },
-  { Icon: Phone, text: "+56 2 2345 6789" },
+  { Icon: Mail, text: "contacto@adipa.cl", href: "mailto:contacto@adipa.cl" },
+  { Icon: Phone, text: "+56 2 2345 6789", href: "tel:+56223456789" },
 ];
 
 const LINK_CLASS =
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Column 2 — Navigation */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/40">
+            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/60">
               Navegación
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Column 3 — Social media */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/40">
+            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/60">
               Redes sociales
             </h3>
             <ul className="flex flex-col gap-3">
@@ -82,17 +82,19 @@ export default function Footer() {
 
           {/* Column 4 — Contact info */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/40">
+            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-white/60">
               Contacto
             </h3>
             <ul className="flex flex-col gap-3">
-              {CONTACT_INFO.map(({ Icon, text }) => (
-                <li
-                  key={text}
-                  className="flex items-center gap-2.5 font-body text-sm text-white/70"
-                >
-                  <Icon size={15} aria-hidden="true" className="shrink-0 text-secondary" />
-                  {text}
+              {CONTACT_INFO.map(({ Icon, text, href }) => (
+                <li key={text}>
+                  <a
+                    href={href}
+                    className="flex items-center gap-2.5 font-body text-sm text-white/70 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
+                  >
+                    <Icon size={15} aria-hidden="true" className="shrink-0 text-secondary" />
+                    {text}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -106,14 +108,14 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 sm:flex-row">
-          <p className="font-body text-xs text-white/40">
+          <p className="font-body text-xs text-white/60">
             © 2025 ADIPA. Todos los derechos reservados.
           </p>
           <div className="flex gap-5">
-            <a href="#" className="font-body text-xs text-white/40 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a href="#" className="font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
               Términos y condiciones
             </a>
-            <a href="#" className="font-body text-xs text-white/40 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a href="#" className="font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
               Política de privacidad
             </a>
           </div>

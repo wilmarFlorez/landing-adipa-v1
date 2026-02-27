@@ -154,9 +154,9 @@ export default function ContactForm() {
     "w-full rounded-btn border px-4 py-3 font-body text-dark placeholder:text-dark/40 bg-white outline-none transition-all duration-200 focus:ring-2";
 
   return (
-    <section id="contacto" className="bg-lightBg py-16 md:py-24">
+    <section id="contacto" aria-labelledby="contacto-heading" className="bg-lightBg py-16 md:py-24">
       <Container>
-        <h2 className="mb-10 font-heading text-3xl font-bold text-dark md:text-4xl">
+        <h2 id="contacto-heading" className="mb-10 font-heading text-3xl font-bold text-dark md:text-4xl">
           Contáctanos
         </h2>
 

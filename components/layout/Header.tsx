@@ -20,6 +20,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   // Add shadow when page is scrolled
   useEffect(() => {
@@ -40,6 +42,44 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", onOutsideClick);
   }, [menuOpen]);
 
+  // Focus trap + Escape key when mobile menu is open
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    // Auto-focus first focusable item when menu opens
+    const focusable = menuRef.current?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled])'
+    );
+    focusable?.[0]?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus(); // Return focus to trigger
+        return;
+      }
+      if (e.key !== "Tab" || !focusable || focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   return (
     <header
       ref={headerRef}
@@ -54,7 +94,7 @@ export default function Header() {
             <a
               href="/"
               aria-label="ADIPA — Inicio"
-              className="font-heading text-2xl font-bold text-primary"
+              className="font-heading text-2xl font-bold text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
             >
               ADIPA
             </a>
@@ -82,6 +122,7 @@ export default function Header() {
 
             {/* Hamburger toggle */}
             <button
+              ref={hamburgerRef}
               type="button"
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
@@ -129,6 +170,7 @@ export default function Header() {
         {/* Mobile menu */}
         {menuOpen && (
           <div
+            ref={menuRef}
             id="mobile-menu"
             className="border-t border-gray-100 bg-white md:hidden"
           >

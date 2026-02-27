@@ -20,8 +20,15 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      {/* Skip link: lets keyboard users bypass the header navigation */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-btn focus:bg-primary focus:px-4 focus:py-2 focus:font-heading focus:font-semibold focus:text-white focus:shadow-lg"
+      >
+        Saltar al contenido principal
+      </a>
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <CoursesSection courses={courses} categories={categories} />
         <ContactForm />

@@ -87,7 +87,7 @@ export default function CourseCard({ course }: Props) {
               {formatPrice(discountPrice)}
             </span>
           </div>
-          <Button variant="primary" size="sm">
+          <Button variant="primary" size="sm" aria-label={`Ver curso: ${title}`}>
             Ver curso
           </Button>
         </div>

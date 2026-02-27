@@ -3,10 +3,13 @@ import Container from "@/components/ui/Container";
 
 export default function Hero() {
   return (
-    <section className="flex min-h-[400px] items-center bg-gradient-to-br from-primary to-secondary md:min-h-[500px]">
+    <section
+      aria-labelledby="hero-heading"
+      className="flex min-h-[400px] items-center bg-gradient-to-br from-primary to-secondary md:min-h-[500px]"
+    >
       <Container>
         <div className="py-16 text-center md:py-24">
-          <h1 className="font-heading text-4xl font-bold leading-tight text-white text-balance md:text-5xl lg:text-6xl">
+          <h1 id="hero-heading" className="font-heading text-4xl font-bold leading-tight text-white text-balance md:text-5xl lg:text-6xl">
             Formación continua en Psicología y Salud Mental
           </h1>
 

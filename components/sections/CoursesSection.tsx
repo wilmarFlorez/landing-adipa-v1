@@ -47,10 +47,10 @@ export default function CoursesSection({ courses, categories }: Props) {
   }
 
   return (
-    <section id="cursos" className="bg-lightBg py-16 md:py-24">
+    <section id="cursos" aria-labelledby="cursos-heading" className="bg-lightBg py-16 md:py-24">
       <Container>
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 className="font-heading text-3xl font-bold text-dark md:text-4xl">
+          <h2 id="cursos-heading" className="font-heading text-3xl font-bold text-dark md:text-4xl">
             Nuestros Cursos
           </h2>
           <CategoryFilter
@@ -74,11 +74,14 @@ export default function CoursesSection({ courses, categories }: Props) {
           ))}
         </ul>
 
-        {filteredCourses.length === 0 && (
-          <p className="py-16 text-center font-body text-dark/50">
-            No hay cursos en esta categoría por el momento.
-          </p>
-        )}
+        {/* Live region announces empty state to screen readers after filter change */}
+        <div aria-live="polite" aria-atomic="true">
+          {filteredCourses.length === 0 && (
+            <p className="py-16 text-center font-body text-dark/50">
+              No hay cursos en esta categoría por el momento.
+            </p>
+          )}
+        </div>
       </Container>
     </section>
   );
