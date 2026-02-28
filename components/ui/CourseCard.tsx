@@ -2,6 +2,7 @@ import Image from "next/image";
 import { User, Calendar } from "lucide-react";
 import type { Course, CourseModality } from "@/types";
 import Button from "@/components/ui/Button";
+import { formatDate, formatPrice } from "@/lib/utils";
 
 interface Props {
   course: Course;
@@ -12,23 +13,6 @@ const modalityClasses: Record<CourseModality, string> = {
   "En Vivo": "bg-primary",
   Presencial: "bg-orange",
 };
-
-function formatDate(iso: string): string {
-  // Append midday to prevent UTC-offset shifting the day
-  return new Intl.DateTimeFormat("es-CL", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(`${iso}T12:00:00`));
-}
-
-function formatPrice(amount: number): string {
-  return new Intl.NumberFormat("es-CL", {
-    style: "currency",
-    currency: "CLP",
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
 
 export default function CourseCard({ course }: Props) {
   const {

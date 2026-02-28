@@ -5,6 +5,7 @@ import type { Category, Course } from "@/types";
 import CategoryFilter from "@/components/ui/CategoryFilter";
 import CourseCard from "@/components/ui/CourseCard";
 import Container from "@/components/ui/Container";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const ALL_SLUG = "all";
 
@@ -50,9 +51,7 @@ export default function CoursesSection({ courses, categories }: Props) {
     <section id="cursos" aria-labelledby="cursos-heading" className="bg-lightBg py-16 md:py-24">
       <Container>
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <h2 id="cursos-heading" className="font-heading text-3xl font-bold text-dark md:text-4xl">
-            Nuestros Cursos
-          </h2>
+          <SectionHeader id="cursos-heading" title="Nuestros Cursos" />
           <CategoryFilter
             categories={categories}
             activeSlug={activeSlug}

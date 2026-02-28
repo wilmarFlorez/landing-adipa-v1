@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import type { ButtonHTMLAttributes } from "react";
 
 type Variant = "primary" | "secondary" | "outline";
@@ -29,15 +30,15 @@ export default function Button({
 }: Props) {
   return (
     <button
-      className={`
-        inline-flex items-center justify-center font-heading font-semibold
-        rounded-btn transition-all duration-150 active:scale-[0.98]
-        focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
-        disabled:opacity-50 disabled:cursor-not-allowed
-        ${variantClasses[variant]}
-        ${sizeClasses[size]}
-        ${className}
-      `}
+      className={clsx(
+        "inline-flex items-center justify-center font-heading font-semibold",
+        "rounded-btn transition-all duration-150 active:scale-[0.98]",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+        "disabled:opacity-50 disabled:cursor-not-allowed",
+        variantClasses[variant],
+        sizeClasses[size],
+        className,
+      )}
       {...props}
     >
       {children}

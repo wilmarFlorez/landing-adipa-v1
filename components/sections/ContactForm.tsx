@@ -5,6 +5,7 @@ import { CheckCircle, Mail, Phone, Clock } from "lucide-react";
 import type { ContactFormData, ContactFormErrors } from "@/types";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 // ---------- validation ----------
 
@@ -153,12 +154,13 @@ export default function ContactForm() {
   const inputBase =
     "w-full rounded-btn border px-4 py-3 font-body text-dark placeholder:text-dark/40 bg-white outline-none transition-all duration-200 focus:ring-2";
 
+  const iconBox =
+    "flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 text-primary";
+
   return (
     <section id="contacto" aria-labelledby="contacto-heading" className="bg-lightBg py-16 md:py-24">
       <Container>
-        <h2 id="contacto-heading" className="mb-10 font-heading text-3xl font-bold text-dark md:text-4xl">
-          Contáctanos
-        </h2>
+        <SectionHeader id="contacto-heading" title="Contáctanos" className="mb-10" />
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Contact info sidebar */}
@@ -170,7 +172,7 @@ export default function ContactForm() {
 
             <ul className="flex flex-col gap-5">
               <li className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 text-primary">
+                <span className={iconBox}>
                   <Mail size={18} aria-hidden="true" />
                 </span>
                 <div>
@@ -179,7 +181,7 @@ export default function ContactForm() {
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 text-primary">
+                <span className={iconBox}>
                   <Phone size={18} aria-hidden="true" />
                 </span>
                 <div>
@@ -188,7 +190,7 @@ export default function ContactForm() {
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 text-primary">
+                <span className={iconBox}>
                   <Clock size={18} aria-hidden="true" />
                 </span>
                 <div>
