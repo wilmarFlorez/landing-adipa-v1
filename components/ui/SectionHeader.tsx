@@ -15,12 +15,12 @@ interface Props {
 }
 
 const titleClasses: Record<Variant, string> = {
-  section: "font-heading text-3xl font-bold text-dark md:text-4xl",
+  section: "font-heading text-3xl font-bold text-dark dark:text-darkText md:text-4xl",
   hero: "font-heading text-4xl font-bold leading-tight text-white text-balance md:text-5xl lg:text-6xl",
 };
 
 const subtitleClasses: Record<Variant, string> = {
-  section: "mt-4 font-body text-lg text-dark/70 leading-relaxed",
+  section: "mt-4 font-body text-lg text-dark/70 dark:text-darkText/70 leading-relaxed",
   hero: "font-body mx-auto mt-5 max-w-2xl text-lg text-white/90 md:text-xl",
 };
 

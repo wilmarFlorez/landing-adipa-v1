@@ -36,7 +36,7 @@ export default function CategoryFilter({
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
               isActive
                 ? "bg-primary text-white shadow-sm"
-                : "bg-white text-dark border border-gray-200 hover:bg-lightBg hover:text-primary",
+                : "bg-white dark:bg-darkCard text-dark dark:text-darkText border border-gray-200 dark:border-white/20 hover:bg-lightBg dark:hover:bg-darkSurface hover:text-primary",
             )}
           >
             {label}

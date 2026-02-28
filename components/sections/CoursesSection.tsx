@@ -48,7 +48,7 @@ export default function CoursesSection({ courses, categories }: Props) {
   }
 
   return (
-    <section id="cursos" aria-labelledby="cursos-heading" className="bg-lightBg py-16 md:py-24">
+    <section id="cursos" aria-labelledby="cursos-heading" className="bg-lightBg dark:bg-darkSurface py-16 md:py-24">
       <Container>
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <SectionHeader id="cursos-heading" title="Nuestros Cursos" />

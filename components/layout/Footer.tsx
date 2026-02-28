@@ -40,7 +40,7 @@ const LINK_CLASS =
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white">
+    <footer className="bg-dark dark:bg-darkCard text-white">
       <Container>
         {/* Main grid */}
         <div className="grid grid-cols-1 gap-10 py-14 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">

@@ -4,7 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
-import { useFocusTrap } from "@/lib/useFocusTrap";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 interface NavLink {
   label: string;
@@ -31,7 +32,7 @@ function MobileNav({ menuRef, links, onClose }: MobileNavProps) {
     <div
       ref={menuRef}
       id="mobile-menu"
-      className="border-t border-gray-100 bg-white md:hidden"
+      className="border-t border-gray-100 dark:border-white/10 bg-white dark:bg-darkCard md:hidden"
     >
       <Container>
         <ul className="flex flex-col py-4">
@@ -40,13 +41,13 @@ function MobileNav({ menuRef, links, onClose }: MobileNavProps) {
               <a
                 href={href}
                 onClick={onClose}
-                className="block py-3 font-heading text-base font-medium text-dark transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+                className="block py-3 font-heading text-base font-medium text-dark dark:text-darkText transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
               >
                 {label}
               </a>
             </li>
           ))}
-          <li className="mt-4 border-t border-gray-100 pt-4">
+          <li className="mt-4 border-t border-gray-100 dark:border-white/10 pt-4">
             <Button variant="outline" size="sm" className="w-full justify-center">
               Iniciar Sesión
             </Button>
@@ -93,7 +94,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${
+      className={`sticky top-0 z-50 bg-white dark:bg-darkCard transition-shadow duration-300 ${
         scrolled ? "shadow-card" : ""
       }`}
     >
@@ -115,7 +116,7 @@ export default function Header() {
                 <li key={href}>
                   <a
                     href={href}
-                    className="link-underline font-heading text-sm font-medium text-dark transition-colors duration-200 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+                    className="link-underline font-heading text-sm font-medium text-dark dark:text-darkText transition-colors duration-200 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
                   >
                     {label}
                   </a>
@@ -123,57 +124,62 @@ export default function Header() {
               ))}
             </ul>
 
-            {/* Desktop CTA */}
-            <div className="hidden md:block">
-              <Button variant="outline" size="sm">
-                Iniciar Sesión
-              </Button>
-            </div>
+            {/* Right-side controls: theme toggle + login (desktop) + hamburger (mobile) */}
+            <div className="flex items-center gap-1">
+              <ThemeToggle />
 
-            {/* Hamburger toggle */}
-            <button
-              ref={hamburgerRef}
-              type="button"
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-              onClick={() => setMenuOpen((prev) => !prev)}
-              className="flex h-10 w-10 items-center justify-center rounded-btn text-dark transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:hidden"
-            >
-              {menuOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              )}
-            </button>
+              {/* Desktop CTA */}
+              <div className="hidden md:block">
+                <Button variant="outline" size="sm">
+                  Iniciar Sesión
+                </Button>
+              </div>
+
+              {/* Hamburger toggle */}
+              <button
+                ref={hamburgerRef}
+                type="button"
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
+                aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+                onClick={() => setMenuOpen((prev) => !prev)}
+                className="flex h-10 w-10 items-center justify-center rounded-btn text-dark dark:text-darkText transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:hidden"
+              >
+                {menuOpen ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </Container>
 

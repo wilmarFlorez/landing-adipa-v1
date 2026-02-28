@@ -6,6 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -16,6 +17,11 @@ const config: Config = {
         dark: "#3A3F5A",
         lightBg: "#F3F4FF",
         lightBg2: "#F8FAFF",
+        // Dark mode surface tokens
+        darkBg: "#1a1d2e",
+        darkCard: "#252840",
+        darkText: "#e8eaf6",
+        darkSurface: "#1f2235",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "sans-serif"],

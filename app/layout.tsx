@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { montserrat, poppins } from "@/lib/fonts";
+import ThemeProvider from "@/components/ui/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -50,6 +51,13 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Reads 'adipa-theme' from localStorage (or prefers-color-scheme as fallback)
+ * and applies the 'dark' class to <html> BEFORE React hydrates, preventing any
+ * flash of the wrong theme on first paint.
+ */
+const themeInitScript = `(function(){try{var t=localStorage.getItem('adipa-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -57,8 +65,17 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${montserrat.variable} ${poppins.variable}`}
+      // suppressHydrationWarning prevents React from complaining about the
+      // 'dark' class being added by the inline script before hydration.
+      suppressHydrationWarning
     >
-      <body className="font-body bg-lightBg2 antialiased">{children}</body>
+      <head>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="font-body bg-lightBg2 dark:bg-darkBg antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

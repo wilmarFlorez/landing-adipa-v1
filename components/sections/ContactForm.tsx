@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import FormField, { inputClasses } from "@/components/ui/FormField";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { useContactForm } from "@/lib/useContactForm";
+import { useContactForm } from "@/hooks/useContactForm";
 
 // ---------- sub-components ----------
 
@@ -14,13 +14,13 @@ function SuccessMessage() {
     <div
       role="status"
       aria-live="polite"
-      className="flex flex-col items-center gap-4 rounded-card bg-white p-10 text-center shadow-card"
+      className="flex flex-col items-center gap-4 rounded-card bg-white dark:bg-darkCard p-10 text-center shadow-card"
     >
       <CheckCircle size={56} className="text-green-500" aria-hidden="true" />
-      <h3 className="font-heading text-2xl font-bold text-dark">
+      <h3 className="font-heading text-2xl font-bold text-dark dark:text-darkText">
         ¡Mensaje enviado!
       </h3>
-      <p className="font-body text-dark/60">
+      <p className="font-body text-dark/60 dark:text-darkText/60">
         Gracias por contactarnos. Te responderemos a la brevedad en el email
         que nos proporcionaste.
       </p>
@@ -30,11 +30,11 @@ function SuccessMessage() {
 
 function ContactSidebar() {
   const iconBox =
-    "flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 text-primary";
+    "flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 dark:bg-primary/20 text-primary";
 
   return (
     <div className="flex flex-col gap-8">
-      <p className="font-body text-lg text-dark/70 leading-relaxed">
+      <p className="font-body text-lg text-dark/70 dark:text-darkText/70 leading-relaxed">
         ¿Tienes dudas sobre nuestros cursos o programas? Escríbenos y un
         asesor académico te contactará a la brevedad.
       </p>
@@ -45,8 +45,8 @@ function ContactSidebar() {
             <Mail size={18} aria-hidden="true" />
           </span>
           <div>
-            <p className="font-heading text-sm font-semibold text-dark">Email</p>
-            <p className="font-body text-dark/60">contacto@adipa.cl</p>
+            <p className="font-heading text-sm font-semibold text-dark dark:text-darkText">Email</p>
+            <p className="font-body text-dark/60 dark:text-darkText/60">contacto@adipa.cl</p>
           </div>
         </li>
         <li className="flex items-start gap-4">
@@ -54,8 +54,8 @@ function ContactSidebar() {
             <Phone size={18} aria-hidden="true" />
           </span>
           <div>
-            <p className="font-heading text-sm font-semibold text-dark">Teléfono</p>
-            <p className="font-body text-dark/60">+56 2 2345 6789</p>
+            <p className="font-heading text-sm font-semibold text-dark dark:text-darkText">Teléfono</p>
+            <p className="font-body text-dark/60 dark:text-darkText/60">+56 2 2345 6789</p>
           </div>
         </li>
         <li className="flex items-start gap-4">
@@ -63,8 +63,8 @@ function ContactSidebar() {
             <Clock size={18} aria-hidden="true" />
           </span>
           <div>
-            <p className="font-heading text-sm font-semibold text-dark">Horario</p>
-            <p className="font-body text-dark/60">
+            <p className="font-heading text-sm font-semibold text-dark dark:text-darkText">Horario</p>
+            <p className="font-body text-dark/60 dark:text-darkText/60">
               Lunes a Viernes, 9:00 – 18:00 hrs.
             </p>
           </div>
@@ -89,10 +89,10 @@ export default function ContactForm() {
   } = useContactForm();
 
   const inputBase =
-    "w-full rounded-btn border px-4 py-3 font-body text-dark placeholder:text-dark/40 bg-white outline-none transition-all duration-200 focus:ring-2";
+    "w-full rounded-btn border px-4 py-3 font-body text-dark dark:text-darkText placeholder:text-dark/40 dark:placeholder:text-darkText/40 bg-white dark:bg-darkCard outline-none transition-all duration-200 focus:ring-2";
 
   return (
-    <section id="contacto" aria-labelledby="contacto-heading" className="bg-lightBg py-16 md:py-24">
+    <section id="contacto" aria-labelledby="contacto-heading" className="bg-lightBg dark:bg-darkSurface py-16 md:py-24">
       <Container>
         <SectionHeader id="contacto-heading" title="Contáctanos" className="mb-10" />
 
@@ -105,7 +105,7 @@ export default function ContactForm() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="flex flex-col gap-5 rounded-card bg-white p-8 shadow-card"
+              className="flex flex-col gap-5 rounded-card bg-white dark:bg-darkCard p-8 shadow-card"
             >
               <FormField
                 id="name"
