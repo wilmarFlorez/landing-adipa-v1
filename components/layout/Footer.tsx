@@ -1,9 +1,21 @@
+import type { LucideIcon } from "lucide-react";
 import { Mail, Phone } from "lucide-react";
 import { SiInstagram, SiFacebook, SiLinkedin, SiYoutube } from "react-icons/si";
 import type { IconType } from "react-icons";
 import Container from "@/components/ui/Container";
 
-const NAV_LINKS = [
+interface FooterNavLink {
+  label: string;
+  href: string;
+}
+
+interface ContactItem {
+  Icon: LucideIcon;
+  text: string;
+  href: string;
+}
+
+const NAV_LINKS: FooterNavLink[] = [
   { label: "Cursos", href: "#cursos" },
   { label: "Diplomados", href: "#" },
   { label: "Recursos", href: "#" },
@@ -18,7 +30,7 @@ const SOCIAL_LINKS: { label: string; href: string; Icon: IconType }[] = [
   { label: "YouTube", href: "#", Icon: SiYoutube },
 ];
 
-const CONTACT_INFO = [
+const CONTACT_INFO: ContactItem[] = [
   { Icon: Mail, text: "contacto@adipa.cl", href: "mailto:contacto@adipa.cl" },
   { Icon: Phone, text: "+56 2 2345 6789", href: "tel:+56223456789" },
 ];
