@@ -24,14 +24,14 @@ const CONTACT_INFO = [
 ];
 
 const LINK_CLASS =
-  "font-body text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm";
+  "link-underline font-body text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm";
 
 export default function Footer() {
   return (
     <footer className="bg-dark text-white">
       <Container>
         {/* Main grid */}
-        <div className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 gap-10 py-14 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
           {/* Column 1 — Brand */}
           <div className="flex flex-col gap-4">
             <span className="font-heading text-2xl font-bold text-white">
@@ -112,10 +112,10 @@ export default function Footer() {
             © 2025 ADIPA. Todos los derechos reservados.
           </p>
           <div className="flex gap-5">
-            <a href="#" className="font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a href="#" className="link-underline font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
               Términos y condiciones
             </a>
-            <a href="#" className="font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a href="#" className="link-underline font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
               Política de privacidad
             </a>
           </div>

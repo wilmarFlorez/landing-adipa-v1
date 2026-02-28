@@ -42,7 +42,7 @@ export default function CourseCard({ course }: Props) {
   } = course;
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-card bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover">
+    <article className="flex flex-col overflow-hidden rounded-card bg-white shadow-card transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-cardHover">
       {/* Course image */}
       <div className="relative h-48 w-full shrink-0">
         <Image

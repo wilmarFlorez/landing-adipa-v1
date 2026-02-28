@@ -105,7 +105,7 @@ export default function Header() {
                 <li key={href}>
                   <a
                     href={href}
-                    className="font-heading text-sm font-medium text-dark transition-colors duration-200 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+                    className="link-underline font-heading text-sm font-medium text-dark transition-colors duration-200 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
                   >
                     {label}
                   </a>

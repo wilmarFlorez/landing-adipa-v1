@@ -29,7 +29,7 @@ export default function CategoryFilter({
             type="button"
             aria-pressed={isActive}
             onClick={() => onChange(slug)}
-            className={`rounded-full px-5 py-2 font-heading text-sm font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
+            className={`rounded-full px-5 py-2 font-heading text-sm font-semibold transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
               isActive
                 ? "bg-primary text-white shadow-sm"
                 : "bg-white text-dark hover:bg-lightBg hover:text-primary border border-gray-200"

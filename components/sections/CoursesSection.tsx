@@ -63,7 +63,7 @@ export default function CoursesSection({ courses, categories }: Props) {
         {/* Grid with fade + scale transition on category change */}
         <ul
           role="list"
-          className={`grid grid-cols-1 gap-6 transition-all duration-200 md:grid-cols-2 lg:grid-cols-3 ${
+          className={`grid grid-cols-1 gap-6 transition-all duration-200 md:grid-cols-2 xl:grid-cols-3 ${
             isTransitioning ? "scale-[0.98] opacity-0" : "scale-100 opacity-100"
           }`}
         >
