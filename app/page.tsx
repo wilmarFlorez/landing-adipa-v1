@@ -19,11 +19,21 @@ export const metadata: Metadata = {
     description:
       "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
     url: "https://adipa.cl/cursos",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ADIPA — Cursos de Psicología y Salud Mental",
+      },
+    ],
   },
   twitter: {
+    card: "summary_large_image",
     title: "Cursos de Psicología y Salud Mental | ADIPA",
     description:
       "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
+    images: ["/og-image.jpg"],
   },
 };
 
