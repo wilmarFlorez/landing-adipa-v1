@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { RefObject } from "react";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 
 interface NavLink {
   label: string;
@@ -16,12 +18,55 @@ const NAV_LINKS: NavLink[] = [
   { label: "Contacto", href: "#contacto" },
 ];
 
+// ---------- sub-components ----------
+
+interface MobileNavProps {
+  menuRef: RefObject<HTMLDivElement>;
+  links: NavLink[];
+  onClose: () => void;
+}
+
+function MobileNav({ menuRef, links, onClose }: MobileNavProps) {
+  return (
+    <div
+      ref={menuRef}
+      id="mobile-menu"
+      className="border-t border-gray-100 bg-white md:hidden"
+    >
+      <Container>
+        <ul className="flex flex-col py-4">
+          {links.map(({ label, href }) => (
+            <li key={href}>
+              <a
+                href={href}
+                onClick={onClose}
+                className="block py-3 font-heading text-base font-medium text-dark transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+          <li className="mt-4 border-t border-gray-100 pt-4">
+            <Button variant="outline" size="sm" className="w-full justify-center">
+              Iniciar Sesión
+            </Button>
+          </li>
+        </ul>
+      </Container>
+    </div>
+  );
+}
+
+// ---------- main component ----------
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   // Add shadow when page is scrolled
   useEffect(() => {
@@ -35,50 +80,15 @@ export default function Header() {
     if (!menuOpen) return;
     const onOutsideClick = (e: MouseEvent) => {
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
+        closeMenu();
       }
     };
     document.addEventListener("mousedown", onOutsideClick);
     return () => document.removeEventListener("mousedown", onOutsideClick);
-  }, [menuOpen]);
+  }, [menuOpen, closeMenu]);
 
   // Focus trap + Escape key when mobile menu is open
-  useEffect(() => {
-    if (!menuOpen) return;
-
-    // Auto-focus first focusable item when menu opens
-    const focusable = menuRef.current?.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled])'
-    );
-    focusable?.[0]?.focus();
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setMenuOpen(false);
-        hamburgerRef.current?.focus(); // Return focus to trigger
-        return;
-      }
-      if (e.key !== "Tab" || !focusable || focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [menuOpen]);
+  useFocusTrap(menuOpen, menuRef, hamburgerRef, closeMenu);
 
   return (
     <header
@@ -167,34 +177,8 @@ export default function Header() {
           </div>
         </Container>
 
-        {/* Mobile menu */}
         {menuOpen && (
-          <div
-            ref={menuRef}
-            id="mobile-menu"
-            className="border-t border-gray-100 bg-white md:hidden"
-          >
-            <Container>
-              <ul className="flex flex-col py-4">
-                {NAV_LINKS.map(({ label, href }) => (
-                  <li key={href}>
-                    <a
-                      href={href}
-                      onClick={() => setMenuOpen(false)}
-                      className="block py-3 font-heading text-base font-medium text-dark transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-                <li className="mt-4 border-t border-gray-100 pt-4">
-                  <Button variant="outline" size="sm" className="w-full justify-center">
-                    Iniciar Sesión
-                  </Button>
-                </li>
-              </ul>
-            </Container>
-          </div>
+          <MobileNav menuRef={menuRef} links={NAV_LINKS} onClose={closeMenu} />
         )}
       </nav>
     </header>

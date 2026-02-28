@@ -1,79 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { CheckCircle, Mail, Phone, Clock } from "lucide-react";
-import type { ContactFormData, ContactFormErrors } from "@/types";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import FormField, { inputClasses } from "@/components/ui/FormField";
 import SectionHeader from "@/components/ui/SectionHeader";
-
-// ---------- validation ----------
-
-function validate(data: ContactFormData): ContactFormErrors {
-  const errors: ContactFormErrors = {};
-
-  if (data.name.trim().length < 2) {
-    errors.name = "El nombre debe tener al menos 2 caracteres.";
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = "Ingresa un email con formato válido.";
-  }
-  if (data.message.trim().length < 10) {
-    errors.message = "El mensaje debe tener al menos 10 caracteres.";
-  }
-
-  return errors;
-}
-
-const EMPTY_FORM: ContactFormData = { name: "", email: "", message: "" };
-
-// ---------- field styling helpers ----------
-
-type FieldState = "default" | "error" | "valid";
-
-const inputClasses: Record<FieldState, string> = {
-  default:
-    "border-gray-200 focus:border-primary focus:ring-primary/20",
-  error:
-    "border-red-500 focus:border-red-500 focus:ring-red-500/20",
-  valid:
-    "border-green-500 focus:border-green-500 focus:ring-green-500/20",
-};
+import { useContactForm } from "@/lib/useContactForm";
 
 // ---------- sub-components ----------
-
-interface FieldProps {
-  id: keyof ContactFormData;
-  label: string;
-  state: FieldState;
-  error?: string;
-  children: React.ReactNode;
-}
-
-function Field({ id, label, state, error, children }: FieldProps) {
-  const errorId = `${id}-error`;
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label
-        htmlFor={id}
-        className="font-heading text-sm font-semibold text-dark"
-      >
-        {label}
-      </label>
-      {/* Inject aria-describedby and aria-invalid onto the child input/textarea */}
-      {children}
-      {state === "error" && error && (
-        <span
-          id={errorId}
-          role="alert"
-          className="font-body text-xs text-red-500"
-        >
-          {error}
-        </span>
-      )}
-    </div>
-  );
-}
 
 function SuccessMessage() {
   return (
@@ -94,68 +28,68 @@ function SuccessMessage() {
   );
 }
 
+function ContactSidebar() {
+  const iconBox =
+    "flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 text-primary";
+
+  return (
+    <div className="flex flex-col gap-8">
+      <p className="font-body text-lg text-dark/70 leading-relaxed">
+        ¿Tienes dudas sobre nuestros cursos o programas? Escríbenos y un
+        asesor académico te contactará a la brevedad.
+      </p>
+
+      <ul className="flex flex-col gap-5">
+        <li className="flex items-start gap-4">
+          <span className={iconBox}>
+            <Mail size={18} aria-hidden="true" />
+          </span>
+          <div>
+            <p className="font-heading text-sm font-semibold text-dark">Email</p>
+            <p className="font-body text-dark/60">contacto@adipa.cl</p>
+          </div>
+        </li>
+        <li className="flex items-start gap-4">
+          <span className={iconBox}>
+            <Phone size={18} aria-hidden="true" />
+          </span>
+          <div>
+            <p className="font-heading text-sm font-semibold text-dark">Teléfono</p>
+            <p className="font-body text-dark/60">+56 2 2345 6789</p>
+          </div>
+        </li>
+        <li className="flex items-start gap-4">
+          <span className={iconBox}>
+            <Clock size={18} aria-hidden="true" />
+          </span>
+          <div>
+            <p className="font-heading text-sm font-semibold text-dark">Horario</p>
+            <p className="font-body text-dark/60">
+              Lunes a Viernes, 9:00 – 18:00 hrs.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
 // ---------- main component ----------
 
 export default function ContactForm() {
-  const [form, setForm] = useState<ContactFormData>(EMPTY_FORM);
-  const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [touched, setTouched] = useState<
-    Partial<Record<keyof ContactFormData, boolean>>
-  >({});
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  function getFieldState(field: keyof ContactFormData): FieldState {
-    if (!touched[field]) return "default";
-    return errors[field] ? "error" : "valid";
-  }
-
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    const { name, value } = e.target;
-    const field = name as keyof ContactFormData;
-    const updated = { ...form, [field]: value };
-    setForm(updated);
-
-    // Re-validate touched fields on change so errors clear as user types
-    if (touched[field]) {
-      setErrors(validate(updated));
-    }
-  }
-
-  function handleBlur(
-    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
-    const field = e.target.name as keyof ContactFormData;
-    setTouched((prev) => ({ ...prev, [field]: true }));
-    setErrors(validate(form));
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    // Mark all fields as touched so every error becomes visible
-    setTouched({ name: true, email: true, message: true });
-
-    const validationErrors = validate(form);
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length > 0) return;
-
-    // Simulate network request
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-    }, 1500);
-  }
+  const {
+    form,
+    errors,
+    submitting,
+    submitted,
+    getFieldState,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = useContactForm();
 
   const inputBase =
     "w-full rounded-btn border px-4 py-3 font-body text-dark placeholder:text-dark/40 bg-white outline-none transition-all duration-200 focus:ring-2";
-
-  const iconBox =
-    "flex h-10 w-10 shrink-0 items-center justify-center rounded-btn bg-primary/10 text-primary";
 
   return (
     <section id="contacto" aria-labelledby="contacto-heading" className="bg-lightBg py-16 md:py-24">
@@ -163,47 +97,8 @@ export default function ContactForm() {
         <SectionHeader id="contacto-heading" title="Contáctanos" className="mb-10" />
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          {/* Contact info sidebar */}
-          <div className="flex flex-col gap-8">
-            <p className="font-body text-lg text-dark/70 leading-relaxed">
-              ¿Tienes dudas sobre nuestros cursos o programas? Escríbenos y un
-              asesor académico te contactará a la brevedad.
-            </p>
+          <ContactSidebar />
 
-            <ul className="flex flex-col gap-5">
-              <li className="flex items-start gap-4">
-                <span className={iconBox}>
-                  <Mail size={18} aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-heading text-sm font-semibold text-dark">Email</p>
-                  <p className="font-body text-dark/60">contacto@adipa.cl</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className={iconBox}>
-                  <Phone size={18} aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-heading text-sm font-semibold text-dark">Teléfono</p>
-                  <p className="font-body text-dark/60">+56 2 2345 6789</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className={iconBox}>
-                  <Clock size={18} aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-heading text-sm font-semibold text-dark">Horario</p>
-                  <p className="font-body text-dark/60">
-                    Lunes a Viernes, 9:00 – 18:00 hrs.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          {/* Form or success message */}
           {submitted ? (
             <SuccessMessage />
           ) : (
@@ -212,8 +107,7 @@ export default function ContactForm() {
               noValidate
               className="flex flex-col gap-5 rounded-card bg-white p-8 shadow-card"
             >
-              {/* Name */}
-              <Field
+              <FormField
                 id="name"
                 label="Nombre completo"
                 state={getFieldState("name")}
@@ -234,10 +128,9 @@ export default function ContactForm() {
                   aria-invalid={getFieldState("name") === "error"}
                   className={`${inputBase} ${inputClasses[getFieldState("name")]}`}
                 />
-              </Field>
+              </FormField>
 
-              {/* Email */}
-              <Field
+              <FormField
                 id="email"
                 label="Correo electrónico"
                 state={getFieldState("email")}
@@ -253,17 +146,14 @@ export default function ContactForm() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   aria-describedby={
-                    getFieldState("email") === "error"
-                      ? "email-error"
-                      : undefined
+                    getFieldState("email") === "error" ? "email-error" : undefined
                   }
                   aria-invalid={getFieldState("email") === "error"}
                   className={`${inputBase} ${inputClasses[getFieldState("email")]}`}
                 />
-              </Field>
+              </FormField>
 
-              {/* Message */}
-              <Field
+              <FormField
                 id="message"
                 label="Mensaje"
                 state={getFieldState("message")}
@@ -285,7 +175,7 @@ export default function ContactForm() {
                   aria-invalid={getFieldState("message") === "error"}
                   className={`${inputBase} resize-none ${inputClasses[getFieldState("message")]}`}
                 />
-              </Field>
+              </FormField>
 
               <Button
                 type="submit"
