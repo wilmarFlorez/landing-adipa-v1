@@ -23,14 +23,11 @@ npm install -g pnpm
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<username>/landing-adipa-v1.git
+git clone https://github.com/wilmarFlorez/landing-adipa-v1.git
 cd landing-adipa-v1
 
 # 2. Install dependencies
 pnpm install
-
-# 3. Set up environment variables
-cp .env.example .env.local
 ```
 
 ## Available commands
@@ -50,51 +47,23 @@ cp .env.example .env.local
 landing-adipa-v1/
 ├── app/
 │   ├── layout.tsx          # Root layout: fonts, global metadata, dark mode anti-flash script
-│   ├── page.tsx            # Section composition; contains skip navigation and <main>
+│   ├── page.tsx            # Section composition and skip navigation
 │   ├── globals.css         # Tailwind directives only, no custom CSS
-│   ├── sitemap.ts          # Generates /sitemap.xml at build time
-│   ├── robots.ts           # Generates /robots.txt at build time
-│   └── favicon.ico
+│   └── sitemap.ts / robots.ts / favicon.ico
 ├── components/
-│   ├── layout/
-│   │   ├── Header.tsx      # Sticky header with mobile menu and keyboard focus trap
-│   │   └── Footer.tsx      # Footer with navigation, social links and contact info
-│   ├── sections/
-│   │   ├── Hero.tsx        # Hero section with CTA and gradient background
-│   │   ├── CoursesSection.tsx  # Course grid with client-side category filtering
-│   │   └── ContactForm.tsx # Form with client-side validation and success state
-│   └── ui/
-│       ├── Button.tsx      # Reusable button with variants (primary / outline / ghost)
-│       ├── CategoryFilter.tsx  # Category filter pill buttons (Client Component)
-│       ├── Container.tsx   # Max-width wrapper (max-w-container = 1400px)
-│       ├── CourseCard.tsx  # Course card with next/image, modality badge and price
-│       ├── FormField.tsx   # Controlled input/textarea with label and error message
-│       ├── SectionHeader.tsx   # Reusable section title and subtitle
-│       ├── ThemeProvider.tsx   # Theme context with localStorage persistence
-│       └── ThemeToggle.tsx # Sun/moon button to toggle light and dark mode
+│   ├── layout/             # Header (sticky, mobile menu) and Footer
+│   ├── sections/           # Hero, CoursesSection, ContactForm
+│   └── ui/                 # Reusable primitives: Button, CourseCard, CategoryFilter, etc.
 ├── data/
 │   └── courses.ts          # Typed mock data: courses[] and categories[]
-├── hooks/
-│   ├── useContactForm.ts   # Form state, validation and submission logic
-│   └── useFocusTrap.ts     # Keyboard focus trap for the mobile menu
-├── lib/
-│   ├── fonts.ts            # Montserrat and Poppins via next/font/google with CSS vars
-│   └── utils.ts            # Utility helpers (clsx wrapper)
 ├── types/
 │   └── index.ts            # Shared interfaces: Course, Category, ContactFormData
-├── __tests__/
-│   ├── components/
-│   │   ├── sections/       # CoursesSection and ContactForm tests
-│   │   └── ui/             # Button component tests
-│   └── lib/
-│       └── utils.test.ts   # Utility function tests
-├── public/
-│   ├── icons/              # SVG and static icon assets
-│   └── images/             # Static image assets
+├── hooks/                  # Custom React hooks (form logic, focus trap)
+├── lib/                    # Font configuration and utility helpers
+├── __tests__/              # Unit and integration tests (Vitest)
+├── public/                 # Static assets (icons, images)
 ├── tailwind.config.ts      # All brand design tokens
-├── next.config.ts          # Remote patterns for Unsplash images
-├── vitest.config.ts        # Vitest configuration with jsdom and React plugin
-└── tsconfig.json           # TypeScript strict mode configuration
+└── next.config.ts          # Remote patterns for Unsplash images
 ```
 
 ## Technical decisions
@@ -144,11 +113,11 @@ Vercel automatically detects Next.js and configures the build with no additional
 
 ## Author
 
-**[Your name]**
+**Wilmar Florez Samudio**
 
-- LinkedIn: [linkedin.com/in/your-username](https://linkedin.com/in/your-username)
-- GitHub: [github.com/your-username](https://github.com/your-username)
+- LinkedIn: [linkedin.com/in/wilmar-florez](https://linkedin.com/in/wilmar-florez)
+- GitHub: [github.com/wilmarFlorez](https://github.com/wilmarFlorez)
 
 ---
 
-Frontend technical assessment for ADIPA — 2025.
+Frontend technical assessment for ADIPA — 2026.
