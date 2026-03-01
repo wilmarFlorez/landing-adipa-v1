@@ -1,29 +1,21 @@
-import { clsx } from "clsx";
-import type { Category } from "@/types";
+import { clsx } from "clsx"
+import type { Category } from "@/types"
 
-const ALL_SLUG = "all";
+const ALL_SLUG = "all"
 
 interface Props {
-  categories: Category[];
-  activeSlug: string;
-  onChange: (slug: string) => void;
+  categories: Category[]
+  activeSlug: string
+  onChange: (slug: string) => void
 }
 
-export default function CategoryFilter({
-  categories,
-  activeSlug,
-  onChange,
-}: Props) {
-  const pills = [{ id: ALL_SLUG, label: "Todos", slug: ALL_SLUG }, ...categories];
+export default function CategoryFilter({ categories, activeSlug, onChange }: Props) {
+  const pills = [{ id: ALL_SLUG, label: "Todos", slug: ALL_SLUG }, ...categories]
 
   return (
-    <div
-      role="group"
-      aria-label="Filtrar por categoría"
-      className="flex flex-wrap gap-2"
-    >
+    <div role="group" aria-label="Filtrar por categoría" className="flex flex-wrap gap-2">
       {pills.map(({ id, label, slug }) => {
-        const isActive = slug === activeSlug;
+        const isActive = slug === activeSlug
         return (
           <button
             key={id}
@@ -36,13 +28,13 @@ export default function CategoryFilter({
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
               isActive
                 ? "bg-primary text-white shadow-sm"
-                : "bg-white dark:bg-darkCard text-dark dark:text-darkText border border-gray-200 dark:border-white/20 hover:bg-lightBg dark:hover:bg-darkSurface hover:text-primary",
+                : "border border-gray-200 bg-white text-dark hover:bg-lightBg hover:text-primary dark:border-white/20 dark:bg-darkCard dark:text-darkText dark:hover:bg-darkSurface"
             )}
           >
             {label}
           </button>
-        );
+        )
       })}
     </div>
-  );
+  )
 }

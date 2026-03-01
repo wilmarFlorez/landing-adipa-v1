@@ -1,4 +1,4 @@
-import type { Category, Course } from "@/types";
+import type { Category, Course } from "@/types"
 
 /** All thematic categories available in the course catalog. */
 export const categories: Category[] = [
@@ -22,7 +22,7 @@ export const categories: Category[] = [
     label: "Salud Mental",
     slug: "salud-mental",
   },
-];
+]
 
 /** Static course catalog with mock data for development and preview. */
 export const courses: Course[] = [
@@ -36,8 +36,7 @@ export const courses: Course[] = [
     price: 290000,
     discountPrice: 199000,
     modality: "En Vivo",
-    imageUrl:
-      "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=600&h=400&fit=crop",
     description:
       "Aprende los principios esenciales de la TCC y su aplicación en el tratamiento de ansiedad, depresión y fobias con casos clínicos reales.",
   },
@@ -50,8 +49,7 @@ export const courses: Course[] = [
     price: 320000,
     discountPrice: 229000,
     modality: "Online",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=600&h=400&fit=crop",
     description:
       "Domina el uso de baterías psicométricas y entrevistas clínicas estructuradas para construir diagnósticos precisos según DSM-5-TR.",
   },
@@ -64,8 +62,7 @@ export const courses: Course[] = [
     price: 185000,
     discountPrice: 129000,
     modality: "Online",
-    imageUrl:
-      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop",
     description:
       "Protocolo de respuesta ante situaciones de crisis aguda, duelo, trauma y riesgo suicida dirigido a profesionales de la salud.",
   },
@@ -80,8 +77,7 @@ export const courses: Course[] = [
     price: 340000,
     discountPrice: 249000,
     modality: "En Vivo",
-    imageUrl:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop",
     description:
       "Herramientas psicológicas para desarrollar estilos de liderazgo adaptativos, fortalecer la cohesión grupal y mejorar el clima organizacional.",
   },
@@ -94,8 +90,7 @@ export const courses: Course[] = [
     price: 265000,
     discountPrice: 189000,
     modality: "Online",
-    imageUrl:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
     description:
       "Análisis del burnout, engagement y factores psicosociales del trabajo, con diseño de estrategias de intervención para empresas.",
   },
@@ -108,8 +103,7 @@ export const courses: Course[] = [
     price: 298000,
     discountPrice: 219000,
     modality: "Presencial",
-    imageUrl:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
     description:
       "Aprende a diseñar y facilitar procesos de selección basados en competencias, usando técnicas de entrevista conductual y dinámicas grupales.",
   },
@@ -124,8 +118,7 @@ export const courses: Course[] = [
     price: 375000,
     discountPrice: 269000,
     modality: "Online",
-    imageUrl:
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
     description:
       "Explora los mecanismos cerebrales que subyacen al aprendizaje, la consolidación de memoria y la plasticidad sináptica con aplicaciones educativas.",
   },
@@ -138,8 +131,7 @@ export const courses: Course[] = [
     price: 420000,
     discountPrice: 299000,
     modality: "En Vivo",
-    imageUrl:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop",
     description:
       "Formación avanzada en evaluación neuropsicológica de daño adquirido, demencias y trastornos del neurodesarrollo, con protocolos de rehabilitación cognitiva.",
   },
@@ -154,8 +146,7 @@ export const courses: Course[] = [
     price: 210000,
     discountPrice: 149000,
     modality: "Online",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop",
     description:
       "Entrenamiento completo en los programas MBSR y MBCT para la reducción del estrés y la prevención de recaídas depresivas, basado en protocolos validados.",
   },
@@ -168,9 +159,8 @@ export const courses: Course[] = [
     price: 280000,
     discountPrice: 209000,
     modality: "Presencial",
-    imageUrl:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
     description:
       "Identificación y abordaje de trastornos de ansiedad, TDAH, depresión y conductas disruptivas en niños y adolescentes desde un enfoque sistémico.",
   },
-];
+]

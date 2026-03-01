@@ -1,18 +1,18 @@
-import type { LucideIcon } from "lucide-react";
-import { Mail, Phone } from "lucide-react";
-import { SiInstagram, SiFacebook, SiLinkedin, SiYoutube } from "react-icons/si";
-import type { IconType } from "react-icons";
-import Container from "@/components/ui/Container";
+import type { LucideIcon } from "lucide-react"
+import { Mail, Phone } from "lucide-react"
+import { SiInstagram, SiFacebook, SiLinkedin, SiYoutube } from "react-icons/si"
+import type { IconType } from "react-icons"
+import Container from "@/components/ui/Container"
 
 interface FooterNavLink {
-  label: string;
-  href: string;
+  label: string
+  href: string
 }
 
 interface ContactItem {
-  Icon: LucideIcon;
-  text: string;
-  href: string;
+  Icon: LucideIcon
+  text: string
+  href: string
 }
 
 const NAV_LINKS: FooterNavLink[] = [
@@ -21,37 +21,35 @@ const NAV_LINKS: FooterNavLink[] = [
   { label: "Recursos", href: "#" },
   { label: "Contacto", href: "#contacto" },
   { label: "Sobre Nosotros", href: "#" },
-];
+]
 
 const SOCIAL_LINKS: { label: string; href: string; Icon: IconType }[] = [
   { label: "Instagram", href: "#", Icon: SiInstagram },
   { label: "Facebook", href: "#", Icon: SiFacebook },
   { label: "LinkedIn", href: "#", Icon: SiLinkedin },
   { label: "YouTube", href: "#", Icon: SiYoutube },
-];
+]
 
 const CONTACT_INFO: ContactItem[] = [
   { Icon: Mail, text: "contacto@adipa.cl", href: "mailto:contacto@adipa.cl" },
   { Icon: Phone, text: "+56 2 2345 6789", href: "tel:+56223456789" },
-];
+]
 
 const LINK_CLASS =
-  "link-underline font-heading text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm";
+  "link-underline font-heading text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
 
 export default function Footer() {
   return (
-    <footer className="bg-dark dark:bg-darkCard text-white">
+    <footer className="bg-dark text-white dark:bg-darkCard">
       <Container>
         {/* Main grid */}
         <div className="grid grid-cols-1 gap-10 py-14 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
           {/* Column 1 — Brand */}
           <div className="flex flex-col gap-4">
-            <span className="font-heading text-2xl font-bold text-white">
-              ADIPA
-            </span>
+            <span className="font-heading text-2xl font-bold text-white">ADIPA</span>
             <p className="font-body text-sm leading-relaxed text-white/60">
-              Plataforma de educación continua especializada en psicología y
-              salud mental, con presencia en Chile y Latinoamérica.
+              Plataforma de educación continua especializada en psicología y salud mental, con
+              presencia en Chile y Latinoamérica.
             </p>
           </div>
 
@@ -82,7 +80,7 @@ export default function Footer() {
                   <a
                     href={href}
                     aria-label={`Visitar ADIPA en ${label}`}
-                    className="inline-flex items-center gap-2.5 font-heading text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
+                    className="inline-flex items-center gap-2.5 rounded-sm font-heading text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
                   >
                     <Icon size={16} aria-hidden="true" className="shrink-0" />
                     {label}
@@ -102,7 +100,7 @@ export default function Footer() {
                 <li key={text}>
                   <a
                     href={href}
-                    className="flex items-center gap-2.5 font-heading text-sm text-white/70 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
+                    className="flex items-center gap-2.5 rounded-sm font-heading text-sm text-white/70 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
                   >
                     <Icon size={15} aria-hidden="true" className="shrink-0 text-secondary" />
                     {text}
@@ -124,15 +122,21 @@ export default function Footer() {
             © 2025 ADIPA. Todos los derechos reservados.
           </p>
           <div className="flex gap-5">
-            <a href="#" className="link-underline font-heading text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a
+              href="#"
+              className="link-underline rounded-sm font-heading text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+            >
               Términos y condiciones
             </a>
-            <a href="#" className="link-underline font-heading text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a
+              href="#"
+              className="link-underline rounded-sm font-heading text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+            >
               Política de privacidad
             </a>
           </div>
         </div>
       </Container>
     </footer>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import Button from "@/components/ui/Button";
-import Container from "@/components/ui/Container";
-import SectionHeader from "@/components/ui/SectionHeader";
+import Button from "@/components/ui/Button"
+import Container from "@/components/ui/Container"
+import SectionHeader from "@/components/ui/SectionHeader"
 
 export default function Hero() {
   return (
@@ -19,13 +19,17 @@ export default function Hero() {
           />
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button variant="primary" size="lg" className="shadow-lg shadow-black/20 w-full sm:w-auto">
+            <Button
+              variant="primary"
+              size="lg"
+              className="w-full shadow-lg shadow-black/20 sm:w-auto"
+            >
               Explorar cursos
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="!border-white !text-white hover:!bg-white/20 w-full sm:w-auto"
+              className="w-full !border-white !text-white hover:!bg-white/20 sm:w-auto"
             >
               Ver diplomados
             </Button>
@@ -33,5 +37,5 @@ export default function Hero() {
         </div>
       </Container>
     </section>
-  );
+  )
 }

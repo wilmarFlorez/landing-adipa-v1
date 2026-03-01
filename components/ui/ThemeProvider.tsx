@@ -1,54 +1,50 @@
-"use client";
+"use client"
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import type { ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react"
+import type { ReactNode } from "react"
 
-type Theme = "light" | "dark";
+type Theme = "light" | "dark"
 
 interface ThemeContextValue {
-  theme: Theme;
-  toggleTheme: () => void;
+  theme: Theme
+  toggleTheme: () => void
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
   theme: "light",
   toggleTheme: () => {},
-});
+})
 
 export function useTheme(): ThemeContextValue {
-  return useContext(ThemeContext);
+  return useContext(ThemeContext)
 }
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("light")
 
   // Sync with the class already applied by the anti-flash inline script in <head>.
   // This runs after hydration so no SSR mismatch.
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
-  }, []);
+    const isDark = document.documentElement.classList.contains("dark")
+    setTheme(isDark ? "dark" : "light")
+  }, [])
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
-      const next: Theme = prev === "light" ? "dark" : "light";
+      const next: Theme = prev === "light" ? "dark" : "light"
       if (next === "dark") {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add("dark")
       } else {
-        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.remove("dark")
       }
       try {
-        localStorage.setItem("adipa-theme", next);
+        localStorage.setItem("adipa-theme", next)
       } catch {
         // localStorage may be unavailable in restricted environments.
       }
-      return next;
-    });
-  }, []);
+      return next
+    })
+  }, [])
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
 }

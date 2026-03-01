@@ -7,7 +7,7 @@ export function formatPrice(price: number): string {
     style: "currency",
     currency: "CLP",
     maximumFractionDigits: 0,
-  }).format(price);
+  }).format(price)
 }
 
 /**
@@ -20,5 +20,5 @@ export function formatDate(dateString: string): string {
     day: "numeric",
     month: "long",
     year: "numeric",
-  }).format(new Date(`${dateString}T12:00:00`));
+  }).format(new Date(`${dateString}T12:00:00`))
 }

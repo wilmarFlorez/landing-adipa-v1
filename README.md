@@ -7,12 +7,22 @@ Landing page for ADIPA's course catalog, a continuing education platform special
 ![TypeScript](https://img.shields.io/badge/typescript-5-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
+## Screenshots
+
+<img width="3730" height="1778" alt="image" src="https://github.com/user-attachments/assets/10255247-7dfd-42e3-8a2d-5e4a5bba5bbd" />
+
+### Dark Mode
+
+<img width="3730" height="1837" alt="image" src="https://github.com/user-attachments/assets/61aba53e-abe7-4d7c-93b2-37211e27b4f7" />
+
+
+
 ## Prerequisites
 
-| Tool | Version used | Notes |
-|------|--------------|-------|
-| Node.js | 24.x | Check with `node --version` |
-| pnpm | 10.x | Install with `npm install -g pnpm` if not available |
+| Tool    | Version used | Notes                                               |
+| ------- | ------------ | --------------------------------------------------- |
+| Node.js | 24.x         | Check with `node --version`                         |
+| pnpm    | 10.x         | Install with `npm install -g pnpm` if not available |
 
 ```bash
 # Install pnpm globally if not already installed
@@ -32,14 +42,16 @@ pnpm install
 
 ## Available commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Development server at `http://localhost:3000` |
-| `pnpm build` | Optimized production build |
-| `pnpm start` | Production server (requires `pnpm build` first) |
-| `pnpm lint` | ESLint code review |
-| `pnpm test` | Run unit tests with Vitest |
-| `pnpm test:watch` | Tests in watch mode during development |
+| Command              | Description                                     |
+| -------------------- | ----------------------------------------------- |
+| `pnpm dev`           | Development server at `http://localhost:3000`   |
+| `pnpm build`         | Optimized production build                      |
+| `pnpm start`         | Production server (requires `pnpm build` first) |
+| `pnpm lint`          | ESLint code review                              |
+| `pnpm format`        | Format all files with Prettier                  |
+| `pnpm format:check`  | Check formatting without writing (CI-friendly)  |
+| `pnpm test`          | Run unit tests with Vitest                      |
+| `pnpm test:watch`    | Tests in watch mode during development          |
 
 ## Project structure
 
@@ -84,18 +96,24 @@ All brand values — colors, shadows, border radii, typography, and max-width �
 
 The active theme is persisted in `localStorage` under the key `adipa-theme`. To prevent a flash of the wrong theme on first render, `app/layout.tsx` injects a synchronous inline script into `<head>` that reads `localStorage` (falling back to `prefers-color-scheme`) and adds the `dark` class to `<html>` before React hydrates. Tailwind uses the `class` dark mode strategy, so all `dark:` variants activate only when that class is present.
 
-## Screenshots
+### Performance (Lighthouse)
 
-> **Pending:** Add screenshots before the final submission.
->
-> Suggested captures: desktop hero view, course grid with an active filter, form with validation errors, dark mode enabled.
+Several decisions were made to keep the Lighthouse performance score high on mobile:
+
+- **`font-display: optional`** — prevents layout shift (CLS) caused by font swapping. The browser uses the web font only if it loads within the initial render window; otherwise it keeps the system fallback with no reflow.
+- **`optimizePackageImports`** — configured in `next.config.ts` for `lucide-react` and `react-icons`. Next.js transforms barrel imports into direct module imports at build time, significantly reducing the initial JavaScript bundle.
+- **`next/dynamic` for `ContactForm`** — the contact section is below the fold and loaded lazily, keeping it out of the critical bundle.
+- **`useTransition` for category filtering** — marks the filter state update as non-urgent so React can keep the UI responsive during the transition, replacing a manual `setTimeout` approach.
+
+### Code formatting
+
+[Prettier](https://prettier.io) is configured with [`prettier-plugin-tailwindcss`](https://github.com/tailwindlabs/prettier-plugin-tailwindcss), which automatically sorts Tailwind utility classes into the canonical order recommended by the Tailwind team. `eslint-config-prettier` is included to disable any ESLint rules that conflict with Prettier's output.
 
 ## Deploy
 
 The project is deployed on Vercel:
 
 **[https://landing-adipa-v1.vercel.app/](https://landing-adipa-v1.vercel.app/)**
-
 
 ## Author
 

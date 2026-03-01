@@ -1,4 +1,4 @@
-import { Montserrat, Poppins } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google"
 
 export const montserrat = Montserrat({
   subsets: ["latin"],
@@ -8,11 +8,11 @@ export const montserrat = Montserrat({
   // connections the fallback is kept; on subsequent visits the font is cached
   // and renders immediately. This is the recommended setting for CLS = 0.
   display: "optional",
-});
+})
 
 export const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "optional",
-});
+})

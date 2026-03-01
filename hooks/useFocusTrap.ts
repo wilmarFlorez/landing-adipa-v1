@@ -1,4 +1,4 @@
-import { useEffect, type RefObject } from "react";
+import { useEffect, type RefObject } from "react"
 
 /**
  * Traps keyboard focus within a container element while it is open.
@@ -17,41 +17,41 @@ export function useFocusTrap(
   isOpen: boolean,
   containerRef: RefObject<HTMLElement | null>,
   returnFocusRef: RefObject<HTMLElement | null>,
-  onClose: () => void,
+  onClose: () => void
 ): void {
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) return
 
     const focusable = containerRef.current?.querySelectorAll<HTMLElement>(
-      "a[href], button:not([disabled])",
-    );
-    focusable?.[0]?.focus();
+      "a[href], button:not([disabled])"
+    )
+    focusable?.[0]?.focus()
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose();
-        returnFocusRef.current?.focus();
-        return;
+        onClose()
+        returnFocusRef.current?.focus()
+        return
       }
-      if (e.key !== "Tab" || !focusable || focusable.length === 0) return;
+      if (e.key !== "Tab" || !focusable || focusable.length === 0) return
 
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
 
       if (e.shiftKey) {
         if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
+          e.preventDefault()
+          last.focus()
         }
       } else {
         if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
+          e.preventDefault()
+          first.focus()
         }
       }
-    };
+    }
 
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [isOpen, containerRef, returnFocusRef, onClose]);
+    document.addEventListener("keydown", onKeyDown)
+    return () => document.removeEventListener("keydown", onKeyDown)
+  }, [isOpen, containerRef, returnFocusRef, onClose])
 }

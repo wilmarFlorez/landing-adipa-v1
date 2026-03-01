@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-import { courses, categories } from "@/data/courses";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import Hero from "@/components/sections/Hero";
-import CoursesSection from "@/components/sections/CoursesSection";
+import type { Metadata } from "next"
+import dynamic from "next/dynamic"
+import { courses, categories } from "@/data/courses"
+import Header from "@/components/layout/Header"
+import Footer from "@/components/layout/Footer"
+import Hero from "@/components/sections/Hero"
+import CoursesSection from "@/components/sections/CoursesSection"
 
 // ContactForm is below the fold — load it after the initial bundle
-const ContactForm = dynamic(() => import("@/components/sections/ContactForm"));
+const ContactForm = dynamic(() => import("@/components/sections/ContactForm"))
 
 export const metadata: Metadata = {
   // Renders as "Cursos de Psicología y Salud Mental | ADIPA" via layout template
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   description:
     "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
   alternates: {
-    canonical: "https://adipa.cl/cursos",
+    canonical: "https://landing-adipa-v1.vercel.app",
   },
   openGraph: {
     title: "Cursos de Psicología y Salud Mental | ADIPA",
     description:
       "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
-    url: "https://adipa.cl/cursos",
+    url: "https://landing-adipa-v1.vercel.app",
     images: [
       {
         url: "/og-image.jpg",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
     images: ["/og-image.jpg"],
   },
-};
+}
 
 export default function Home() {
   return (
@@ -58,5 +58,5 @@ export default function Home() {
       </main>
       <Footer />
     </>
-  );
+  )
 }
