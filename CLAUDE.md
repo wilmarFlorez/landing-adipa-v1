@@ -6,58 +6,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page de catálogo de cursos para **ADIPA** (plataforma de educación en psicología y salud mental). Prueba técnica frontend — ver `project-description.md` para la rúbrica completa.
 
-Stack: **Next.js 14+ (App Router) · Tailwind CSS · TypeScript (strict)**
+Stack: **Next.js 16 (App Router) · Tailwind CSS 3 · TypeScript (strict) · pnpm**
 
 ## Commands
 
 ```bash
-npm install
-npm run dev        # development server
-npm run build      # production build
-npm run lint       # ESLint
-npx tsc --noEmit   # type check
+pnpm install
+pnpm dev                 # development server
+pnpm build               # production build
+pnpm lint                # ESLint
+pnpm exec tsc --noEmit   # type check
 ```
-
-> Once initialized, update this section with the actual Node version and any additional scripts.
 
 ## Architecture
 
 ```
 app/
-  layout.tsx       # Root layout: fonts (Montserrat, Poppins), metadata
-  page.tsx         # Composes all sections in order
-  globals.css      # Tailwind base directives
-components/        # One file per UI component, all props typed via interfaces
+  layout.tsx        # Root layout: applies font CSS vars, bg-lightBg2, OG metadata
+  page.tsx          # Composes all sections in order
+  globals.css       # Tailwind directives only (no custom CSS variables)
+components/
+  layout/           # Header, Footer — rendered on every page
+  sections/         # Full-page sections: Hero, CoursesSection, ContactForm
+  ui/               # Reusable primitives: Button, Container, CourseCard, CategoryFilter
+data/
+  courses.ts        # Static mock data: courses[] and categories[] exports
+types/
+  index.ts          # All shared interfaces: Course, Category, ContactFormData, ContactFormErrors, CourseModality
 lib/
-  data.ts          # Static mock data: 8+ courses, 3+ categories (NOT inline in JSX)
-  types.ts         # Shared TypeScript interfaces (Course, Category, etc.)
-tailwind.config.ts # Design tokens defined here (colors, fonts, shadows)
+  fonts.ts          # Montserrat (--font-heading) and Poppins (--font-body) via next/font/google
+tailwind.config.ts  # All brand design tokens
+next.config.ts      # remotePatterns for images.unsplash.com
 ```
 
 ## Key Constraints
 
-**No pre-styled component libraries** (no shadcn, DaisyUI). Tailwind utilities and headless components (Radix, Headless UI) are allowed. Icon libraries (Lucide, Heroicons) are fine.
+**No pre-styled component libraries** (no shadcn, DaisyUI). Tailwind utilities and headless components (Radix, Headless UI) are allowed. Icon library: `lucide-react`.
 
-**TypeScript strict mode** — no `any`, all component props fully typed.
+**TypeScript strict mode** — no `any`, all component props typed via explicit interfaces.
 
-**Data** must live in `lib/data.ts` as typed constants, never hardcoded in JSX.
+**Data** lives in `data/courses.ts` as typed constants, never hardcoded in JSX.
+
+**`"use client"`** — only when a component needs `useState`, `useEffect`, or browser APIs. Layout primitives (Container, Button) and data-only sections stay as Server Components.
 
 ## Design Tokens (tailwind.config.ts)
 
-| Token | Value |
-|-------|-------|
-| primary | `#704EFD` |
-| secondary | `#2CB7FF` |
-| pink | `#FF017C` |
-| orange | `#FFA927` |
-| dark | `#3A3F5A` |
-| light-bg | `#F3F4FF` |
-| light-bg-2 | `#F8FAFF` |
+| Token | Tailwind class | Value |
+|-------|----------------|-------|
+| primary | `bg-primary` / `text-primary` | `#704EFD` |
+| secondary | `bg-secondary` | `#2CB7FF` |
+| pink | `text-pink` | `#FF017C` |
+| orange | `bg-orange` | `#FFA927` |
+| dark | `text-dark` | `#3A3F5A` |
+| lightBg | `bg-lightBg` | `#F3F4FF` |
+| lightBg2 | `bg-lightBg2` | `#F8FAFF` |
+| card shadow | `shadow-card` / `shadow-cardHover` | — |
+| border radius | `rounded-card` (12px) · `rounded-btn` (8px) | — |
+| max width | `max-w-container` (1400px) | — |
 
-Fonts: `Montserrat` (headings, nav, buttons) · `Poppins` (body, labels)
-
-Spacing: container `max-w-[1400px]` · card radius `12px` · button radius `8px`
-Card shadow: `0 2px 4px rgba(3,27,78,0.06)` → hover: `0 10px 20px rgba(3,27,78,0.1)`
+Fonts: `font-heading` → Montserrat · `font-body` → Poppins
 
 ## Responsive Breakpoints
 
@@ -71,10 +78,13 @@ Card shadow: `0 2px 4px rgba(3,27,78,0.06)` → hover: `0 10px 20px rgba(3,27,78
 
 1. **Header** — logo, nav (Cursos / Diplomados / Recursos / Contacto), login button (visual only)
 2. **Hero** — title, short description, CTA "Explorar cursos", gradient/image background
-3. **Course Grid** — cards with image, title, instructor, start date, original+discounted price, modality badge, action button
-4. **Category Filter** — client-side filtering (no page reload), pills/tabs, "Todos" + 3+ categories
-5. **Contact Form** — name (min 2 chars), email (valid format), message (min 10 chars); client-side validation + visual success state
-6. **Footer** — logo, nav links, social icons, copyright
+3. **CoursesSection** — course grid + CategoryFilter (client-side filtering, no reload)
+4. **ContactForm** — name/email/message with client-side validation + visual success state
+5. **Footer** — logo, nav links, social icons, copyright
+
+## Code Style
+
+All comments and JSDoc must be written in **English**.
 
 ## Bonus Features (optional, evaluated)
 
