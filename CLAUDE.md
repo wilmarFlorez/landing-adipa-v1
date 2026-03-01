@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Landing page de catálogo de cursos para **ADIPA** (plataforma de educación en psicología y salud mental). Prueba técnica frontend — ver `project-description.md` para la rúbrica completa.
+Landing page de catálogo de cursos para **ADIPA** (plataforma de educación en psicología y salud mental).
 
 Stack: **Next.js 16 (App Router) · Tailwind CSS 3 · TypeScript (strict) · pnpm**
 
