@@ -119,7 +119,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-6 sm:flex-row">
           <p className="font-body text-xs text-white/60">
-            © 2025 ADIPA. Todos los derechos reservados.
+            © 2026 ADIPA. Todos los derechos reservados.
           </p>
           <div className="flex gap-5">
             <a

@@ -17,14 +17,14 @@ describe("formatPrice", () => {
 })
 
 describe("formatDate", () => {
-  it("formats '2025-03-15' as '15 de marzo de 2025'", () => {
+  it("formats '2026-03-15' as '15 de marzo de 2026'", () => {
     // Verified against Node.js ICU data (es-CL locale uses 'de' connector)
-    expect(formatDate("2025-03-15")).toBe("15 de marzo de 2025")
-  })
+    expect(formatDate("2026-03-15")).toBe("15 de marzo de 2026");
+  });
 
   it("formats a December date with the correct month name", () => {
-    expect(formatDate("2025-12-01")).toContain("diciembre")
-    expect(formatDate("2025-12-01")).toContain("2025")
-    expect(formatDate("2025-12-01")).toContain("1")
-  })
-})
+    expect(formatDate("2026-12-01")).toContain("diciembre");
+    expect(formatDate("2026-12-01")).toContain("2026");
+    expect(formatDate("2026-12-01")).toContain("1");
+  });
+});

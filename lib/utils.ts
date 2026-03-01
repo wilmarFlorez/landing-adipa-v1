@@ -13,7 +13,7 @@ export function formatPrice(price: number): string {
 /**
  * Formats an ISO date string as a localized Spanish date.
  * A noon time component is appended to prevent UTC-offset day shifting.
- * Example: "2025-04-07" → "7 de abril de 2025"
+ * Example: "2026-04-07" → "7 de abril de 2026"
  */
 export function formatDate(dateString: string): string {
   return new Intl.DateTimeFormat("es-CL", {
