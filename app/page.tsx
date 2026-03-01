@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   description:
     "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
   alternates: {
-    canonical: "https://adipa.cl/cursos",
+    canonical: "https://landing-adipa-v1.vercel.app",
   },
   openGraph: {
     title: "Cursos de Psicología y Salud Mental | ADIPA",
     description:
       "Explora nuestro catálogo de cursos online, en vivo y presenciales en psicología clínica, organizacional, neurociencias y salud mental.",
-    url: "https://adipa.cl/cursos",
+    url: "https://landing-adipa-v1.vercel.app",
     images: [
       {
         url: "/og-image.jpg",

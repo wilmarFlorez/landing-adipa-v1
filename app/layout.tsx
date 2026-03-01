@@ -5,7 +5,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   // metadataBase resolves relative URLs in openGraph.images and alternates
-  metadataBase: new URL("https://adipa.cl"),
+  metadataBase: new URL("https://landing-adipa-v1.vercel.app"),
   title: {
     template: "%s | ADIPA",
     default: "ADIPA | Formación en Psicología y Salud Mental",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Chile",
     "Latinoamérica",
   ],
-  authors: [{ name: "ADIPA", url: "https://adipa.cl" }],
+  authors: [{ name: "ADIPA", url: "https://landing-adipa-v1.vercel.app" }],
   openGraph: {
     type: "website",
     siteName: "ADIPA",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://adipa.cl",
+    canonical: "https://landing-adipa-v1.vercel.app",
   },
 }
 
