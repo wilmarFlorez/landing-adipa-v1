@@ -1,32 +1,24 @@
-import Image from "next/image";
-import { User, Calendar } from "lucide-react";
-import type { Course, CourseModality } from "@/types";
-import Button from "@/components/ui/Button";
-import { formatDate, formatPrice } from "@/lib/utils";
+import Image from "next/image"
+import { User, Calendar } from "lucide-react"
+import type { Course, CourseModality } from "@/types"
+import Button from "@/components/ui/Button"
+import { formatDate, formatPrice } from "@/lib/utils"
 
 interface Props {
-  course: Course;
+  course: Course
 }
 
 const modalityClasses: Record<CourseModality, string> = {
   Online: "bg-secondary",
   "En Vivo": "bg-primary",
   Presencial: "bg-orange",
-};
+}
 
 export default function CourseCard({ course }: Props) {
-  const {
-    title,
-    instructor,
-    startDate,
-    price,
-    discountPrice,
-    modality,
-    imageUrl,
-  } = course;
+  const { title, instructor, startDate, price, discountPrice, modality, imageUrl } = course
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-card bg-white dark:bg-darkCard shadow-card transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-cardHover">
+    <article className="flex flex-col overflow-hidden rounded-card bg-white shadow-card transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-cardHover dark:bg-darkCard">
       {/* Course image */}
       <div className="relative h-48 w-full shrink-0">
         <Image
@@ -46,7 +38,7 @@ export default function CourseCard({ course }: Props) {
 
       {/* Card body */}
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-heading text-base font-bold leading-snug text-dark dark:text-darkText line-clamp-2">
+        <h3 className="line-clamp-2 font-heading text-base font-bold leading-snug text-dark dark:text-darkText">
           {title}
         </h3>
 
@@ -62,9 +54,9 @@ export default function CourseCard({ course }: Props) {
         </div>
 
         {/* Price + CTA */}
-        <div className="mt-auto flex items-center justify-between border-t border-gray-100 dark:border-white/10 pt-4 mt-5">
+        <div className="mt-5 mt-auto flex items-center justify-between border-t border-gray-100 pt-4 dark:border-white/10">
           <div className="flex flex-col">
-            <span className="font-body text-xs text-dark/40 dark:text-darkText/40 line-through">
+            <span className="font-body text-xs text-dark/40 line-through dark:text-darkText/40">
               {formatPrice(price)}
             </span>
             <span className="font-heading text-xl font-bold text-pink">
@@ -77,5 +69,5 @@ export default function CourseCard({ course }: Props) {
         </div>
       </div>
     </article>
-  );
+  )
 }

@@ -51,28 +51,28 @@ next.config.ts      # remotePatterns for images.unsplash.com
 
 ## Design Tokens (tailwind.config.ts)
 
-| Token | Tailwind class | Value |
-|-------|----------------|-------|
-| primary | `bg-primary` / `text-primary` | `#704EFD` |
-| secondary | `bg-secondary` | `#2CB7FF` |
-| pink | `text-pink` | `#FF017C` |
-| orange | `bg-orange` | `#FFA927` |
-| dark | `text-dark` | `#3A3F5A` |
-| lightBg | `bg-lightBg` | `#F3F4FF` |
-| lightBg2 | `bg-lightBg2` | `#F8FAFF` |
-| card shadow | `shadow-card` / `shadow-cardHover` | — |
-| border radius | `rounded-card` (12px) · `rounded-btn` (8px) | — |
-| max width | `max-w-container` (1400px) | — |
+| Token         | Tailwind class                              | Value     |
+| ------------- | ------------------------------------------- | --------- |
+| primary       | `bg-primary` / `text-primary`               | `#704EFD` |
+| secondary     | `bg-secondary`                              | `#2CB7FF` |
+| pink          | `text-pink`                                 | `#FF017C` |
+| orange        | `bg-orange`                                 | `#FFA927` |
+| dark          | `text-dark`                                 | `#3A3F5A` |
+| lightBg       | `bg-lightBg`                                | `#F3F4FF` |
+| lightBg2      | `bg-lightBg2`                               | `#F8FAFF` |
+| card shadow   | `shadow-card` / `shadow-cardHover`          | —         |
+| border radius | `rounded-card` (12px) · `rounded-btn` (8px) | —         |
+| max width     | `max-w-container` (1400px)                  | —         |
 
 Fonts: `font-heading` → Montserrat · `font-body` → Poppins
 
 ## Responsive Breakpoints
 
-| Breakpoint | Width | Course grid |
-|---|---|---|
-| Mobile | 375px | 1 column |
-| Tablet | 768px | 2 columns |
-| Desktop | 1280px+ | 3 columns |
+| Breakpoint | Width   | Course grid |
+| ---------- | ------- | ----------- |
+| Mobile     | 375px   | 1 column    |
+| Tablet     | 768px   | 2 columns   |
+| Desktop    | 1280px+ | 3 columns   |
 
 ## Sections (in order)
 

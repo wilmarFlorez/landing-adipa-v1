@@ -1,42 +1,43 @@
-"use client";
+"use client"
 
-import { useMemo, useTransition } from "react";
-import type { Category, Course } from "@/types";
-import CategoryFilter from "@/components/ui/CategoryFilter";
-import CourseCard from "@/components/ui/CourseCard";
-import Container from "@/components/ui/Container";
-import SectionHeader from "@/components/ui/SectionHeader";
-import { useState } from "react";
+import { useMemo, useTransition } from "react"
+import type { Category, Course } from "@/types"
+import CategoryFilter from "@/components/ui/CategoryFilter"
+import CourseCard from "@/components/ui/CourseCard"
+import Container from "@/components/ui/Container"
+import SectionHeader from "@/components/ui/SectionHeader"
+import { useState } from "react"
 
-const ALL_SLUG = "all";
+const ALL_SLUG = "all"
 
 interface Props {
-  courses: Course[];
-  categories: Category[];
+  courses: Course[]
+  categories: Category[]
 }
 
 export default function CoursesSection({ courses, categories }: Props) {
-  const [activeSlug, setActiveSlug] = useState<string>(ALL_SLUG);
-  const [isPending, startTransition] = useTransition();
+  const [activeSlug, setActiveSlug] = useState<string>(ALL_SLUG)
+  const [isPending, startTransition] = useTransition()
 
   const filteredCourses = useMemo(
-    () =>
-      activeSlug === ALL_SLUG
-        ? courses
-        : courses.filter((c) => c.category === activeSlug),
+    () => (activeSlug === ALL_SLUG ? courses : courses.filter((c) => c.category === activeSlug)),
     [courses, activeSlug]
-  );
+  )
 
   function handleCategoryChange(slug: string) {
-    if (slug === activeSlug) return;
+    if (slug === activeSlug) return
     // Mark the filter update as non-urgent so the UI stays responsive
     startTransition(() => {
-      setActiveSlug(slug);
-    });
+      setActiveSlug(slug)
+    })
   }
 
   return (
-    <section id="cursos" aria-labelledby="cursos-heading" className="bg-lightBg dark:bg-darkSurface py-16 md:py-24">
+    <section
+      id="cursos"
+      aria-labelledby="cursos-heading"
+      className="bg-lightBg py-16 dark:bg-darkSurface md:py-24"
+    >
       <Container>
         <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <SectionHeader id="cursos-heading" title="Nuestros Cursos" />
@@ -71,5 +72,5 @@ export default function CoursesSection({ courses, categories }: Props) {
         </div>
       </Container>
     </section>
-  );
+  )
 }

@@ -20,8 +20,8 @@ Se recomienda visitar la referencia y analizar la estructura, los componentes y 
 
 Se debe entregar **una única versión** implementada con el siguiente stack:
 
-| Stack |
-|-------|
+| Stack                                                    |
+| -------------------------------------------------------- |
 | **Next.js 14+ (App Router) · Tailwind CSS · TypeScript** |
 
 **Importante:** La data es inventada por el candidato. No es necesario consumir ninguna API. Se deben crear datos ficticios con al menos **8 cursos** distribuidos en un mínimo de **3 categorías**.
@@ -93,48 +93,48 @@ Se deben utilizar estos valores para mantener consistencia con la identidad visu
 
 ### Colores
 
-| Token | Hex | Uso |
-|-------|-----|-----|
-| Primary | `#704EFD` | Botones principales, enlaces, acentos |
-| Secondary | `#2CB7FF` | Botones secundarios, badges, highlights |
-| Pink | `#FF017C` | Descuentos, alertas, CTAs urgentes |
-| Orange | `#FFA927` | Badges, ratings, elementos de atención |
-| Dark | `#3A3F5A` | Texto principal, fondos oscuros |
-| Light BG | `#F3F4FF` | Fondo de secciones alternadas |
-| Light BG 2 | `#F8FAFF` | Fondo general, cards |
-| White | `#FFFFFF` | Fondo de cards, contraste |
+| Token      | Hex       | Uso                                     |
+| ---------- | --------- | --------------------------------------- |
+| Primary    | `#704EFD` | Botones principales, enlaces, acentos   |
+| Secondary  | `#2CB7FF` | Botones secundarios, badges, highlights |
+| Pink       | `#FF017C` | Descuentos, alertas, CTAs urgentes      |
+| Orange     | `#FFA927` | Badges, ratings, elementos de atención  |
+| Dark       | `#3A3F5A` | Texto principal, fondos oscuros         |
+| Light BG   | `#F3F4FF` | Fondo de secciones alternadas           |
+| Light BG 2 | `#F8FAFF` | Fondo general, cards                    |
+| White      | `#FFFFFF` | Fondo de cards, contraste               |
 
 ### Tipografía
 
-| Fuente | Uso | Google Fonts |
-|--------|-----|--------------|
+| Fuente         | Uso                           | Google Fonts                                         |
+| -------------- | ----------------------------- | ---------------------------------------------------- |
 | **Montserrat** | Headings, navegación, botones | [Link](https://fonts.google.com/specimen/Montserrat) |
-| **Poppins** | Body text, párrafos, labels | [Link](https://fonts.google.com/specimen/Poppins) |
+| **Poppins**    | Body text, párrafos, labels   | [Link](https://fonts.google.com/specimen/Poppins)    |
 
 ### Espaciado y Dimensiones
 
-| Propiedad | Valor |
-|-----------|-------|
-| Container max-width | `1400px` |
-| Border radius (cards) | `12px` |
-| Border radius (botones) | `8px` |
-| Sombra (cards) | `0 2px 4px rgba(3, 27, 78, 0.06)` |
-| Sombra hover (cards) | `0 10px 20px rgba(3, 27, 78, 0.1)` |
-| Padding global | `20px` |
+| Propiedad               | Valor                              |
+| ----------------------- | ---------------------------------- |
+| Container max-width     | `1400px`                           |
+| Border radius (cards)   | `12px`                             |
+| Border radius (botones) | `8px`                              |
+| Sombra (cards)          | `0 2px 4px rgba(3, 27, 78, 0.06)`  |
+| Sombra hover (cards)    | `0 10px 20px rgba(3, 27, 78, 0.1)` |
+| Padding global          | `20px`                             |
 
 ---
 
 ## Requisitos Técnicos
 
-| Requisito | Detalle |
-|-----------|---------|
-| Framework | Next.js 14+ con **App Router** |
-| Estilos | Tailwind CSS 3+ o 4 |
-| Lenguaje | TypeScript en modo estricto (`strict: true`) |
+| Requisito   | Detalle                                                            |
+| ----------- | ------------------------------------------------------------------ |
+| Framework   | Next.js 14+ con **App Router**                                     |
+| Estilos     | Tailwind CSS 3+ o 4                                                |
+| Lenguaje    | TypeScript en modo estricto (`strict: true`)                       |
 | Componentes | Reutilizables, tipados, con props definidas vía interfaces o types |
-| Data | Archivo JSON o constantes tipadas (no hardcodeado en JSX) |
-| Responsive | Mobile (375px), Tablet (768px), Desktop (1280px+) |
-| Estructura | Separación clara de componentes, layouts y data |
+| Data        | Archivo JSON o constantes tipadas (no hardcodeado en JSX)          |
+| Responsive  | Mobile (375px), Tablet (768px), Desktop (1280px+)                  |
+| Estructura  | Separación clara de componentes, layouts y data                    |
 
 ---
 
@@ -158,13 +158,13 @@ La entrega será evaluada con la siguiente rúbrica.
 
 ### Criterios Principales
 
-| Criterio | Peso | Excelente (10) | Bueno (7) | Regular (4) | Insuficiente (1) |
-|----------|------|----------------|-----------|-------------|-------------------|
-| **Estructura del proyecto** | 25% | Organización clara, separación de concerns, naming consistente, archivos donde se esperaría encontrarlos | Buena estructura con pequeñas inconsistencias | Estructura básica funcional pero sin criterio claro | Archivos desordenados, sin estructura reconocible |
-| **Calidad visual y fidelidad** | 25% | Iguala o supera la referencia visual. Atención al detalle en tipografía, espaciado, colores y jerarquía | Muy similar a la referencia con diferencias menores | Reconocible pero con diferencias notables en diseño | No se parece a la referencia o ignora los design tokens |
-| **Responsive design** | 20% | Correcto en los 3 breakpoints (375px, 768px, 1280px+). Transiciones fluidas | Funciona en los 3 breakpoints con ajustes menores | Mobile funciona pero presenta problemas en tablet | No es responsive o el layout se rompe |
-| **Código limpio** | 20% | Legible, reutilizable, sigue convenciones del stack. Buen uso de types/interfaces | Buen código con áreas de mejora menores | Funcional pero difícil de mantener | Malas prácticas evidentes |
-| **Extras (bonus)** | 10% | 4+ extras bien implementados | 2-3 extras implementados | 1 extra implementado | Sin extras |
+| Criterio                       | Peso | Excelente (10)                                                                                           | Bueno (7)                                           | Regular (4)                                         | Insuficiente (1)                                        |
+| ------------------------------ | ---- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------- |
+| **Estructura del proyecto**    | 25%  | Organización clara, separación de concerns, naming consistente, archivos donde se esperaría encontrarlos | Buena estructura con pequeñas inconsistencias       | Estructura básica funcional pero sin criterio claro | Archivos desordenados, sin estructura reconocible       |
+| **Calidad visual y fidelidad** | 25%  | Iguala o supera la referencia visual. Atención al detalle en tipografía, espaciado, colores y jerarquía  | Muy similar a la referencia con diferencias menores | Reconocible pero con diferencias notables en diseño | No se parece a la referencia o ignora los design tokens |
+| **Responsive design**          | 20%  | Correcto en los 3 breakpoints (375px, 768px, 1280px+). Transiciones fluidas                              | Funciona en los 3 breakpoints con ajustes menores   | Mobile funciona pero presenta problemas en tablet   | No es responsive o el layout se rompe                   |
+| **Código limpio**              | 20%  | Legible, reutilizable, sigue convenciones del stack. Buen uso de types/interfaces                        | Buen código con áreas de mejora menores             | Funcional pero difícil de mantener                  | Malas prácticas evidentes                               |
+| **Extras (bonus)**             | 10%  | 4+ extras bien implementados                                                                             | 2-3 extras implementados                            | 1 extra implementado                                | Sin extras                                              |
 
 ---
 

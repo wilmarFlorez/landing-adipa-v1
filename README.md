@@ -9,10 +9,10 @@ Landing page for ADIPA's course catalog, a continuing education platform special
 
 ## Prerequisites
 
-| Tool | Version used | Notes |
-|------|--------------|-------|
-| Node.js | 24.x | Check with `node --version` |
-| pnpm | 10.x | Install with `npm install -g pnpm` if not available |
+| Tool    | Version used | Notes                                               |
+| ------- | ------------ | --------------------------------------------------- |
+| Node.js | 24.x         | Check with `node --version`                         |
+| pnpm    | 10.x         | Install with `npm install -g pnpm` if not available |
 
 ```bash
 # Install pnpm globally if not already installed
@@ -32,14 +32,14 @@ pnpm install
 
 ## Available commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Development server at `http://localhost:3000` |
-| `pnpm build` | Optimized production build |
-| `pnpm start` | Production server (requires `pnpm build` first) |
-| `pnpm lint` | ESLint code review |
-| `pnpm test` | Run unit tests with Vitest |
-| `pnpm test:watch` | Tests in watch mode during development |
+| Command           | Description                                     |
+| ----------------- | ----------------------------------------------- |
+| `pnpm dev`        | Development server at `http://localhost:3000`   |
+| `pnpm build`      | Optimized production build                      |
+| `pnpm start`      | Production server (requires `pnpm build` first) |
+| `pnpm lint`       | ESLint code review                              |
+| `pnpm test`       | Run unit tests with Vitest                      |
+| `pnpm test:watch` | Tests in watch mode during development          |
 
 ## Project structure
 
@@ -95,7 +95,6 @@ The active theme is persisted in `localStorage` under the key `adipa-theme`. To 
 The project is deployed on Vercel:
 
 **[https://landing-adipa-v1.vercel.app/](https://landing-adipa-v1.vercel.app/)**
-
 
 ## Author
 
