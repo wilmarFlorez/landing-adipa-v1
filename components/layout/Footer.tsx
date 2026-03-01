@@ -36,7 +36,7 @@ const CONTACT_INFO: ContactItem[] = [
 ];
 
 const LINK_CLASS =
-  "link-underline font-body text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm";
+  "link-underline font-heading text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm";
 
 export default function Footer() {
   return (
@@ -82,7 +82,7 @@ export default function Footer() {
                   <a
                     href={href}
                     aria-label={`Visitar ADIPA en ${label}`}
-                    className="inline-flex items-center gap-2.5 font-body text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
+                    className="inline-flex items-center gap-2.5 font-heading text-sm text-white/70 transition-colors duration-200 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
                   >
                     <Icon size={16} aria-hidden="true" className="shrink-0" />
                     {label}
@@ -102,7 +102,7 @@ export default function Footer() {
                 <li key={text}>
                   <a
                     href={href}
-                    className="flex items-center gap-2.5 font-body text-sm text-white/70 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
+                    className="flex items-center gap-2.5 font-heading text-sm text-white/70 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm"
                   >
                     <Icon size={15} aria-hidden="true" className="shrink-0 text-secondary" />
                     {text}
@@ -124,10 +124,10 @@ export default function Footer() {
             © 2025 ADIPA. Todos los derechos reservados.
           </p>
           <div className="flex gap-5">
-            <a href="#" className="link-underline font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a href="#" className="link-underline font-heading text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
               Términos y condiciones
             </a>
-            <a href="#" className="link-underline font-body text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
+            <a href="#" className="link-underline font-heading text-xs text-white/60 transition-colors hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary rounded-sm">
               Política de privacidad
             </a>
           </div>
