@@ -7,6 +7,16 @@ Landing page for ADIPA's course catalog, a continuing education platform special
 ![TypeScript](https://img.shields.io/badge/typescript-5-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
+## Screenshots
+
+<img width="3730" height="1778" alt="image" src="https://github.com/user-attachments/assets/10255247-7dfd-42e3-8a2d-5e4a5bba5bbd" />
+
+### Dark Mode
+
+<img width="3730" height="1837" alt="image" src="https://github.com/user-attachments/assets/61aba53e-abe7-4d7c-93b2-37211e27b4f7" />
+
+
+
 ## Prerequisites
 
 | Tool    | Version used | Notes                                               |
@@ -84,11 +94,6 @@ All brand values â€” colors, shadows, border radii, typography, and max-width â€
 
 The active theme is persisted in `localStorage` under the key `adipa-theme`. To prevent a flash of the wrong theme on first render, `app/layout.tsx` injects a synchronous inline script into `<head>` that reads `localStorage` (falling back to `prefers-color-scheme`) and adds the `dark` class to `<html>` before React hydrates. Tailwind uses the `class` dark mode strategy, so all `dark:` variants activate only when that class is present.
 
-## Screenshots
-
-> **Pending:** Add screenshots before the final submission.
->
-> Suggested captures: desktop hero view, course grid with an active filter, form with validation errors, dark mode enabled.
 
 ## Deploy
 
