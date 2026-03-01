@@ -26,7 +26,6 @@ export const categories: Category[] = [
 
 /** Static course catalog with mock data for development and preview. */
 export const courses: Course[] = [
-  // --- Psicología Clínica ---
   {
     id: "curso-001",
     title: "Terapia Cognitivo-Conductual: Fundamentos y Práctica",
@@ -66,8 +65,6 @@ export const courses: Course[] = [
     description:
       "Protocolo de respuesta ante situaciones de crisis aguda, duelo, trauma y riesgo suicida dirigido a profesionales de la salud.",
   },
-
-  // --- Psicología Organizacional ---
   {
     id: "curso-004",
     title: "Liderazgo Consciente y Gestión de Equipos de Alto Rendimiento",
@@ -107,8 +104,6 @@ export const courses: Course[] = [
     description:
       "Aprende a diseñar y facilitar procesos de selección basados en competencias, usando técnicas de entrevista conductual y dinámicas grupales.",
   },
-
-  // --- Neurociencias ---
   {
     id: "curso-007",
     title: "Neurociencia Aplicada al Aprendizaje y la Memoria",
@@ -135,8 +130,6 @@ export const courses: Course[] = [
     description:
       "Formación avanzada en evaluación neuropsicológica de daño adquirido, demencias y trastornos del neurodesarrollo, con protocolos de rehabilitación cognitiva.",
   },
-
-  // --- Salud Mental ---
   {
     id: "curso-009",
     title: "Mindfulness Basado en la Evidencia: MBSR y MBCT",
