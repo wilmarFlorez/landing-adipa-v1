@@ -42,14 +42,16 @@ pnpm install
 
 ## Available commands
 
-| Command           | Description                                     |
-| ----------------- | ----------------------------------------------- |
-| `pnpm dev`        | Development server at `http://localhost:3000`   |
-| `pnpm build`      | Optimized production build                      |
-| `pnpm start`      | Production server (requires `pnpm build` first) |
-| `pnpm lint`       | ESLint code review                              |
-| `pnpm test`       | Run unit tests with Vitest                      |
-| `pnpm test:watch` | Tests in watch mode during development          |
+| Command              | Description                                     |
+| -------------------- | ----------------------------------------------- |
+| `pnpm dev`           | Development server at `http://localhost:3000`   |
+| `pnpm build`         | Optimized production build                      |
+| `pnpm start`         | Production server (requires `pnpm build` first) |
+| `pnpm lint`          | ESLint code review                              |
+| `pnpm format`        | Format all files with Prettier                  |
+| `pnpm format:check`  | Check formatting without writing (CI-friendly)  |
+| `pnpm test`          | Run unit tests with Vitest                      |
+| `pnpm test:watch`    | Tests in watch mode during development          |
 
 ## Project structure
 
@@ -94,6 +96,18 @@ All brand values — colors, shadows, border radii, typography, and max-width �
 
 The active theme is persisted in `localStorage` under the key `adipa-theme`. To prevent a flash of the wrong theme on first render, `app/layout.tsx` injects a synchronous inline script into `<head>` that reads `localStorage` (falling back to `prefers-color-scheme`) and adds the `dark` class to `<html>` before React hydrates. Tailwind uses the `class` dark mode strategy, so all `dark:` variants activate only when that class is present.
 
+### Performance (Lighthouse)
+
+Several decisions were made to keep the Lighthouse performance score high on mobile:
+
+- **`font-display: optional`** — prevents layout shift (CLS) caused by font swapping. The browser uses the web font only if it loads within the initial render window; otherwise it keeps the system fallback with no reflow.
+- **`optimizePackageImports`** — configured in `next.config.ts` for `lucide-react` and `react-icons`. Next.js transforms barrel imports into direct module imports at build time, significantly reducing the initial JavaScript bundle.
+- **`next/dynamic` for `ContactForm`** — the contact section is below the fold and loaded lazily, keeping it out of the critical bundle.
+- **`useTransition` for category filtering** — marks the filter state update as non-urgent so React can keep the UI responsive during the transition, replacing a manual `setTimeout` approach.
+
+### Code formatting
+
+[Prettier](https://prettier.io) is configured with [`prettier-plugin-tailwindcss`](https://github.com/tailwindlabs/prettier-plugin-tailwindcss), which automatically sorts Tailwind utility classes into the canonical order recommended by the Tailwind team. `eslint-config-prettier` is included to disable any ESLint rules that conflict with Prettier's output.
 
 ## Deploy
 
