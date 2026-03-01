@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useTransition } from "react";
 import type { Category, Course } from "@/types";
 import CategoryFilter from "@/components/ui/CategoryFilter";
 import CourseCard from "@/components/ui/CourseCard";
 import Container from "@/components/ui/Container";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useState } from "react";
 
 const ALL_SLUG = "all";
 
@@ -16,15 +17,7 @@ interface Props {
 
 export default function CoursesSection({ courses, categories }: Props) {
   const [activeSlug, setActiveSlug] = useState<string>(ALL_SLUG);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Clear pending timer on unmount to avoid state updates on unmounted component
-  useEffect(() => {
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, []);
+  const [isPending, startTransition] = useTransition();
 
   const filteredCourses = useMemo(
     () =>
@@ -36,15 +29,10 @@ export default function CoursesSection({ courses, categories }: Props) {
 
   function handleCategoryChange(slug: string) {
     if (slug === activeSlug) return;
-
-    // Clear any in-flight transition before starting a new one
-    if (timerRef.current) clearTimeout(timerRef.current);
-
-    setIsTransitioning(true);
-    timerRef.current = setTimeout(() => {
+    // Mark the filter update as non-urgent so the UI stays responsive
+    startTransition(() => {
       setActiveSlug(slug);
-      setIsTransitioning(false);
-    }, 200);
+    });
   }
 
   return (
@@ -59,11 +47,11 @@ export default function CoursesSection({ courses, categories }: Props) {
           />
         </div>
 
-        {/* Grid with fade + scale transition on category change */}
+        {/* Grid with fade transition while React processes the category update */}
         <ul
           role="list"
           className={`grid grid-cols-1 gap-6 transition-all duration-200 md:grid-cols-2 xl:grid-cols-3 ${
-            isTransitioning ? "scale-[0.98] opacity-0" : "scale-100 opacity-100"
+            isPending ? "scale-[0.98] opacity-0" : "scale-100 opacity-100"
           }`}
         >
           {filteredCourses.map((course) => (

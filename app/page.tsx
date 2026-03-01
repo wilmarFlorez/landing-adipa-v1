@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { courses, categories } from "@/data/courses";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import CoursesSection from "@/components/sections/CoursesSection";
-import ContactForm from "@/components/sections/ContactForm";
+
+// ContactForm is below the fold — load it after the initial bundle
+const ContactForm = dynamic(() => import("@/components/sections/ContactForm"));
 
 export const metadata: Metadata = {
   // Renders as "Cursos de Psicología y Salud Mental | ADIPA" via layout template

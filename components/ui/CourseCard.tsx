@@ -51,11 +51,11 @@ export default function CourseCard({ course }: Props) {
         </h3>
 
         <div className="mt-3 flex flex-col gap-1.5">
-          <div className="flex items-center gap-1.5 text-sm text-dark/60 dark:text-darkText/60">
+          <div className="flex items-center gap-1.5 font-body text-sm text-dark/60 dark:text-darkText/60">
             <User size={14} aria-hidden="true" className="shrink-0" />
             <span>{instructor}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-sm text-dark/60 dark:text-darkText/60">
+          <div className="flex items-center gap-1.5 font-body text-sm text-dark/60 dark:text-darkText/60">
             <Calendar size={14} aria-hidden="true" className="shrink-0" />
             <time dateTime={startDate}>{formatDate(startDate)}</time>
           </div>
